@@ -12,6 +12,7 @@ a {
 
 /* Header */
 .header {
+  width: 100%;
   height: 91px;
   background-color: #020203;
   display: flex;
@@ -29,25 +30,34 @@ a {
 
 .nav-t {
   display: flex;
-  width: 100%;
+  width: 1024px;
   justify-content: space-evenly;
 }
 
 .nav-l {
   display: flex;
+  justify-content: center;
   flex-direction: column;
   background: black;
   width: 117px;
   height: 100%;
   align-items: center;
   position: absolute;
+  top: 0px;
+  z-index: -1;
 }
-.nav-l p {
+.nav-l .copiryght {
+  transform: rotate(-90deg);
+  width: 150px;
+  position: relative;
+  top: 20%;
+  text-align: center;
+}
+.nav-l .copiryght p {
   color: white;
-  transform: rotate(270deg);
-  position: absolute;
-  bottom: 150px;
-  width: 185px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 24px;
 }
 .nav-l img {
   height: 32px;
@@ -57,10 +67,9 @@ a {
   flex-direction: column;
   justify-content: space-between;
   position: relative;
-  top: 30%;
   height: 316px;
 }
-.nav-l .nav-l-bt {
+.nav-l .nav-l-group .nav-l-bt {
   display: flex;
   justify-content: center;
   align-items: center;

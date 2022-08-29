@@ -68,7 +68,9 @@ function NavBar() {
             <img src={logoFitness} alt="Logo Kasa" className="logoHeader"></img>
           </NavLink>
         </div>
-        <p>Copiryght, SportSee 2022</p>
+        <div className="copiryght">
+          <p>Copiryght, SportSee 2022</p>
+        </div>
       </nav>
     </div>
   );
