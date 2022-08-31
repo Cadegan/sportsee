@@ -17,7 +17,13 @@ function DashBoard() {
 
   return data ? (
     <div className="dashBoard">
-      <WellCome firstName={data.userInfos.firstName} />
+      <WellCome
+        firstName={data.userInfos.firstName}
+        calorieCount={data.keyData.calorieCount}
+        proteinCount={data.keyData.proteinCount}
+        carbohydrateCount={data.keyData.carbohydrateCount}
+        lipidCount={data.keyData.lipidCount}
+      />
     </div>
   ) : null;
 }
