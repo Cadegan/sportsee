@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import NavBar from "../src/components/Header/index";
 import "./styles/main.css";
-import Home from "./pages/Home/index";
+import User from "./utils/hooks/index";
 import reportWebVitals from "./reportWebVitals";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -12,7 +12,7 @@ root.render(
     <Router>
       <NavBar />
       <Routes>
-        <Route exact path="/" element={<Home />}></Route>
+        <Route exact path="/" element={<User />}></Route>
         {/* <Route exact path="/" element={<Profile />}></Route>
         <Route exact path="/" element={<About />}></Route>
         <Route exact path="/" element={<Setting />}></Route>
