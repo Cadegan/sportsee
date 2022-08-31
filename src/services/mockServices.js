@@ -1,4 +1,47 @@
 // import React from "react";
+import axios from "axios";
+// import { useEffect } from "react";
+
+// function mainData() {
+//   const url = "../../public/data/userMainData.json";
+
+//   return axios
+//     .get(url)
+//     .then((data) => data.json())
+//     .catch((err) => {
+//       console.log(`Erreur axios :` + err.message);
+//     });
+// }
+
+async function mainData() {
+  const url = "/userMainData.json";
+
+  try {
+    const data = await fetch(url);
+    return await data.json();
+  } catch (error) {
+    console.log(`Erreur fetch :` + error.message);
+  }
+
+  //   return axios
+  //     .get(url)
+  //     .then((data) => data.json())
+  //     .catch((err) => {
+  //       console.log(`Erreur axios :` + err.message);
+  //     });
+}
+
+export default mainData;
+
+// useEffect(() => {
+//   const getStats = async () => {
+//     await axios.get("/dataMoked.json").then((response) => {
+//       console.log(response);
+//     });
+//   };
+//   getStats();
+// }, []);
+
 // import { useState, useEffect } from "react";
 // import axios from "axios";
 // // import { useParams } from "react-router-dom";
@@ -56,15 +99,15 @@
 //   // }
 //   // return profile();
 
-//   // useEffect(() => {
-//   //   const getStats = () => {
-//   //     const response = Axios.get("/dataMoked.json").then((response) => {
-//   //       console.log(response);
-//   //     });
-//   //     setData(response);
-//   //   };
-//   //   getStats();
-//   // }, []);
+// useEffect(() => {
+//   const getStats = () => {
+//     const response = Axios.get("/dataMoked.json").then((response) => {
+//       console.log(response);
+//     });
+//     setData(response);
+//   };
+//   getStats();
+// }, []);
 
 //   // const getUserById = (id) => data.find((e) => e.id === id);
 //   // return getUserById;
