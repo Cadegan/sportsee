@@ -93,6 +93,32 @@ a {
   color: #FF0101;
 }
 
+/* Side informations */
+.sideInformationsCount {
+  display: flex;
+  width: 258px;
+  height: 124px;
+  align-items: center;
+  margin-bottom: 25px;
+  background-color: #FBFBFB;
+}
+
+.logoInformationCount {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  width: 60px;
+  border-radius: 6px;
+}
+.logoInformationCount img {
+  height: 20px;
+}
+
+.caloriesCount div:nth-child(1) {
+  background-color: rgba(255, 0, 0, 0.1);
+}
+
 /* Dashboard */
 .statSection {
   position: absolute;
@@ -103,4 +129,23 @@ a {
 .dashBoard {
   position: absolute;
   margin-left: 117px;
+}
+
+.globalInformations {
+  border: dotted;
+  display: flex;
+}
+.globalInformations .centerInformations {
+  background-color: aquamarine;
+  border: solid;
+}
+.globalInformations .centerInformations .bodyWeight {
+  border: groove;
+}
+.globalInformations .centerInformations .charts {
+  border: groove;
+}
+.globalInformations .sideInformations {
+  background-color: coral;
+  border: groove;
 }/*# sourceMappingURL=main.css.map */

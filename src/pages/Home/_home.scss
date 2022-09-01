@@ -12,3 +12,26 @@
     position: absolute;
     margin-left: 117px;
 }
+
+.globalInformations {
+    border: dotted;
+    display: flex;
+
+    .centerInformations {
+        background-color: aquamarine;
+        border: solid;
+
+        .bodyWeight {
+            border: groove;
+        }
+
+        .charts {
+            border: groove;
+        }
+    }
+
+    .sideInformations {
+        background-color: coral;
+        border: groove;
+    }
+}

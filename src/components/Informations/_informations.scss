@@ -1,0 +1,28 @@
+/* Side informations */
+
+.sideInformationsCount {
+    display: flex;
+    width: 258px;
+    height: 124px;
+    align-items: center;
+    margin-bottom: 25px;
+    background-color: #FBFBFB;
+}
+
+.logoInformationCount {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    width: 60px;
+    border-radius: 6px;
+
+    img {
+        height: 20px;
+    }
+
+}
+
+.caloriesCount div:nth-child(1) {
+    background-color: rgb(255, 0, 0, 0.1);
+}
