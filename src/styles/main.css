@@ -102,6 +102,15 @@ a {
   margin-bottom: 25px;
   background-color: #FBFBFB;
 }
+.sideInformationsCount span {
+  font-weight: 700;
+  font-size: 20px;
+}
+.sideInformationsCount p {
+  font-weight: 500;
+  font-size: 14px;
+  color: #74798C;
+}
 
 .logoInformationCount {
   display: flex;
@@ -110,6 +119,8 @@ a {
   height: 60px;
   width: 60px;
   border-radius: 6px;
+  margin-left: 32px;
+  margin-right: 24px;
 }
 .logoInformationCount img {
   height: 20px;
@@ -117,6 +128,18 @@ a {
 
 .caloriesCount div:nth-child(1) {
   background-color: rgba(255, 0, 0, 0.1);
+}
+
+.proteinsCount div:nth-child(1) {
+  background-color: rgba(74, 184, 255, 0.1);
+}
+
+.glucidesCount div:nth-child(1) {
+  background-color: rgba(253, 204, 12, 0.1);
+}
+
+.lipidCount div:nth-child(1) {
+  background-color: rgba(253, 81, 129, 0.1);
 }
 
 /* Dashboard */
@@ -143,9 +166,5 @@ a {
   border: groove;
 }
 .globalInformations .centerInformations .charts {
-  border: groove;
-}
-.globalInformations .sideInformations {
-  background-color: coral;
   border: groove;
 }/*# sourceMappingURL=main.css.map */

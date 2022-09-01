@@ -3,6 +3,7 @@ import caloriesIcon from "../../assets/calories-icon.svg";
 import proteinesIcon from "../../assets/protein-icon.svg";
 import glucidesIcon from "../../assets/glucides-icon.svg";
 import lipidesIcon from "../../assets/lipides-icon.svg";
+import numberFormat from "../../components/CaloriesFormat";
 
 function sideInformations({
   calorieCount,
@@ -18,55 +19,58 @@ function sideInformations({
             src={caloriesIcon}
             alt="Logo calorie"
             className="caloriesIcon"
-            role="img"
             aria-label="fire"
           ></img>
         </div>
         <div className="textInformationCount">
-          <span>{calorieCount + `kCal`}</span>
+          <span>{numberFormat(calorieCount) + `kCal`}</span>
           <p>Calories</p>
         </div>
       </div>
       <div className="proteinsCount sideInformationsCount">
-        <img
-          src={proteinesIcon}
-          alt="Logo protein"
-          className="proteinesIcon"
-          role="img"
-          aria-label="meat"
-        ></img>
-        {proteinCount + `g`}
-        <p>Proteines</p>
+        <div className="logoInformationCount">
+          <img
+            src={proteinesIcon}
+            alt="Logo protein"
+            className="proteinesIcon"
+            aria-label="meat"
+          ></img>
+        </div>
+        <div className="textInformationCount">
+          <span>{proteinCount + `g`}</span>
+          <p>Proteines</p>
+        </div>
       </div>
       <div className="glucidesCount sideInformationsCount">
-        <img
-          src={glucidesIcon}
-          alt="Logo glucide"
-          className="glucidesIcon"
-          role="img"
-          aria-label="apple"
-        ></img>
-        {carbohydrateCount + `g`}
+        <div className="logoInformationCount">
+          <img
+            src={glucidesIcon}
+            alt="Logo glucide"
+            className="glucidesIcon"
+            aria-label="apple"
+          ></img>
+        </div>
+        <div className="textInformationCount">
+          <span>{carbohydrateCount + `g`}</span>
+          <p>Glucides</p>
+        </div>
       </div>
       <div className="lipidCount sideInformationsCount">
-        <img
-          src={lipidesIcon}
-          alt="Logo lipide"
-          className="lipidesIcon"
-          role="img"
-          aria-label="hamburger"
-        ></img>
-        {lipidCount}
+        <div className="logoInformationCount">
+          <img
+            src={lipidesIcon}
+            alt="Logo lipide"
+            className="lipidesIcon"
+            aria-label="hamburger"
+          ></img>
+        </div>
+        <div className="textInformationCount">
+          <span>{lipidCount + `g`}</span>
+          <p>Lipides</p>
+        </div>
       </div>
     </section>
   );
 }
 
 export default sideInformations;
-
-// <NavLink className="bt-swimming nav-l-bt" to="/">
-//             <img
-//               src={logoSwimming}
-//               alt="Logo Kasa"
-//               className="logoHeader"
-//             ></img>
