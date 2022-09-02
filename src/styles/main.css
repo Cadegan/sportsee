@@ -144,6 +144,22 @@ a {
   background-color: rgba(253, 81, 129, 0.1);
 }
 
+.containerUsers {
+  display: flex;
+  flex-direction: column;
+  left: 117px;
+  position: relative;
+  width: 400px;
+  left: 40%;
+  align-items: center;
+}
+
+.usersChoice {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
 /* Dashboard */
 .statSection {
   position: absolute;

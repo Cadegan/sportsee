@@ -1,1 +1,1 @@
-.statSection{position:absolute;top:50%;left:50%}.dashBoard{position:absolute;margin-left:117px}.globalInformations{display:flex}.globalInformations .centerInformations{background-color:#7fffd4;border:solid}.globalInformations .centerInformations .bodyWeight{border:groove}.globalInformations .centerInformations .charts{border:groove}
+.containerUsers{display:flex;flex-direction:column;left:117px;position:relative;width:400px;left:40%;align-items:center}.usersChoice{display:flex;width:100%;justify-content:space-around}

@@ -1,0 +1,32 @@
+/* Dashboard */
+
+.statSection {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+.dashBoard {
+    // display: flex;
+    // justify-content: center;
+    position: absolute;
+    margin-left: 117px;
+}
+
+.globalInformations {
+    // border: dotted;
+    display: flex;
+
+    .centerInformations {
+        background-color: aquamarine;
+        border: solid;
+
+        .bodyWeight {
+            border: groove;
+        }
+
+        .charts {
+            border: groove;
+        }
+    }
+}
