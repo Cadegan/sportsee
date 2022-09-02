@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import caloriesIcon from "../../assets/calories-icon.svg";
 import proteinesIcon from "../../assets/protein-icon.svg";
 import glucidesIcon from "../../assets/glucides-icon.svg";
@@ -13,7 +14,7 @@ function sideInformations({
 }) {
   return (
     <section className="sideInformations">
-      <div className="caloriesCount sideInformationsCount">
+      <div className="caloriesCount sideInformationsContainer">
         <div className="logoInformationCount">
           <img
             src={caloriesIcon}
@@ -27,7 +28,7 @@ function sideInformations({
           <p>Calories</p>
         </div>
       </div>
-      <div className="proteinsCount sideInformationsCount">
+      <div className="proteinsCount sideInformationsContainer">
         <div className="logoInformationCount">
           <img
             src={proteinesIcon}
@@ -41,7 +42,7 @@ function sideInformations({
           <p>Proteines</p>
         </div>
       </div>
-      <div className="glucidesCount sideInformationsCount">
+      <div className="glucidesCount sideInformationsContainer">
         <div className="logoInformationCount">
           <img
             src={glucidesIcon}
@@ -55,7 +56,7 @@ function sideInformations({
           <p>Glucides</p>
         </div>
       </div>
-      <div className="lipidCount sideInformationsCount">
+      <div className="lipidCount sideInformationsContainer">
         <div className="logoInformationCount">
           <img
             src={lipidesIcon}
@@ -72,5 +73,12 @@ function sideInformations({
     </section>
   );
 }
+
+sideInformations.propTypes = {
+  calorieCount: PropTypes.number,
+  proteinCount: PropTypes.number,
+  carbohydrateCount: PropTypes.number,
+  lipidCount: PropTypes.number,
+};
 
 export default sideInformations;

@@ -94,7 +94,7 @@ a {
 }
 
 /* Side informations */
-.sideInformationsCount {
+.sideInformationsContainer {
   display: flex;
   width: 258px;
   height: 124px;
@@ -104,11 +104,11 @@ a {
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.02);
   border-radius: 5px;
 }
-.sideInformationsCount span {
+.sideInformationsContainer span {
   font-weight: 700;
   font-size: 20px;
 }
-.sideInformationsCount p {
+.sideInformationsContainer p {
   font-weight: 500;
   font-size: 14px;
   color: #74798C;
