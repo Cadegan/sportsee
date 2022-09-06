@@ -1,8 +1,8 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import mainData from "../../services/mockServices";
-// import mainData from "../../services/API";
+// import mainData from "../../services/mockServices";
+import mainData from "../../services/API";
 import WelCome from "../../components/Welcome/welcome";
 import SideInformations from "../../components/Informations/informations";
 
@@ -12,15 +12,15 @@ function DashBoard() {
 
   useEffect(() => {
     /*  Data from mocked service */
-    mainData().then((items) => {
-      let datas = items.find((item) => item.id === parseFloat(id));
-      setData(datas);
-    });
+    // mainData().then((items) => {
+    //   let datas = items.find((item) => item.id === parseFloat(id));
+    //   setData(datas);
+    // });
 
     /*  Data from API service */
-    // mainData().then((items) => {
-    //   setData(items.data);
-    // });
+    mainData(id).then((items) => {
+      setData(items.data);
+    });
   }, [id]);
 
   return data ? (
