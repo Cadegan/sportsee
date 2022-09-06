@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 // import mainData from "../../services/mockServices";
-import mainData from "../../services/API";
+import { getUser } from "../../services/API";
 import WelCome from "../../components/Welcome/welcome";
 import SideInformations from "../../components/Informations/informations";
 import Score from "../../components/Score/score";
@@ -19,11 +19,12 @@ function DashBoard() {
     // });
 
     /*  Data from API service */
-    mainData(id).then((items) => {
+    getUser(id).then((items) => {
       setData(items.data);
     });
   }, [id]);
 
+  // const userScore = data.todayScore || data.score;
   return data ? (
     <div className="dashBoard">
       <WelCome firstName={data.userInfos.firstName} />
@@ -43,7 +44,7 @@ function DashBoard() {
           carbohydrateCount={data.keyData.carbohydrateCount}
           lipidCount={data.keyData.lipidCount}
         />
-        {/* <Score /> */}
+        <Score scoreData={data.score} />
       </div>
     </div>
   ) : null;

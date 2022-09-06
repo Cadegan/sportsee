@@ -1,20 +1,24 @@
 import React from "react";
-import { RadialBarChart, RadialBar, Legend } from "recharts";
+import { PieChart, Pie, Cell } from "recharts";
 
-function Score(data) {
-  const userScore = data.todayScore || data.score;
-
+function Score(scoreData) {
   return (
-    <RadialBarChart>
-      width={160}
-      height={160}
-      cx={80}
-      cy={80}
-      innerRadius={20}
-      outerRadius={140}
-      barSize={10}
-      data={data}
-    </RadialBarChart>
+    <PieChart width={800} height={400} className="score">
+      <Pie
+        data={scoreData}
+        cx={120}
+        cy={200}
+        innerRadius={60}
+        outerRadius={80}
+        paddingAngle={5}
+        dataKey="value"
+        fill="#8884d8"
+      >
+        {/* {scoreData.map((index) => (
+          <Cell key={`cell-${index}`} fill={"#83a6ed"} />
+        ))} */}
+      </Pie>
+    </PieChart>
   );
 }
 
