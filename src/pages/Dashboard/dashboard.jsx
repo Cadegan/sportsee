@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import mainData from "../../services/mockServices";
 // import mainData from "../../services/API";
-import WelCome from "../../components/Welcome";
-import SideInformations from "../../components/Informations/index";
+import WelCome from "../../components/Welcome/welcome";
+import SideInformations from "../../components/Informations/informations";
 
 function DashBoard() {
   const { id } = useParams();

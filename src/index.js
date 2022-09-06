@@ -1,26 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import NavBar from "../src/components/Header/index";
+import App from "./App";
 import "./styles/main.css";
-import Home from "./pages/Home/index";
-import DashBoard from "./pages/Dashboard/index";
+
 import reportWebVitals from "./reportWebVitals";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <Router>
-      <NavBar />
-      <Routes>
-        <Route exact path="/" element={<Home />}></Route>
-        <Route exact path="/user/:id" element={<DashBoard />}></Route>
-        {/* <Route exact path="/" element={<Profile />}></Route>
-        <Route exact path="/" element={<About />}></Route>
-        <Route exact path="/" element={<Setting />}></Route>
-        <Route exact path="/" element={<Community />}></Route> */}
-      </Routes>
-    </Router>
+    <App />
   </React.StrictMode>
 );
 

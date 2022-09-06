@@ -4,7 +4,7 @@ import caloriesIcon from "../../assets/calories-icon.svg";
 import proteinesIcon from "../../assets/protein-icon.svg";
 import glucidesIcon from "../../assets/glucides-icon.svg";
 import lipidesIcon from "../../assets/lipides-icon.svg";
-import numberFormat from "../../components/CaloriesFormat";
+import caloriesFormat from "../CaloriesFormat/caloriesFormat";
 
 function sideInformations({
   calorieCount,
@@ -24,7 +24,7 @@ function sideInformations({
           ></img>
         </div>
         <div className="textInformationCount">
-          <span>{numberFormat(calorieCount) + `kCal`}</span>
+          <span>{caloriesFormat(calorieCount) + `kCal`}</span>
           <p>Calories</p>
         </div>
       </div>
