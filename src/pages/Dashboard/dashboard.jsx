@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import mainData from "../../services/API";
 import WelCome from "../../components/Welcome/welcome";
 import SideInformations from "../../components/Informations/informations";
+import Score from "../../components/Score/score";
 
 function DashBoard() {
   const { id } = useParams();
@@ -42,6 +43,7 @@ function DashBoard() {
           carbohydrateCount={data.keyData.carbohydrateCount}
           lipidCount={data.keyData.lipidCount}
         />
+        {/* <Score /> */}
       </div>
     </div>
   ) : null;

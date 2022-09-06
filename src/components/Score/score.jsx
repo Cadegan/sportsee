@@ -1,7 +1,9 @@
 import React from "react";
 import { RadialBarChart, RadialBar, Legend } from "recharts";
 
-function Score() {
+function Score(data) {
+  const userScore = data.todayScore || data.score;
+
   return (
     <RadialBarChart>
       width={160}
