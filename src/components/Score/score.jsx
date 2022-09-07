@@ -1,11 +1,16 @@
 import React from "react";
 import { PieChart, Pie, Cell } from "recharts";
 
-function Score(scoreData) {
+const Score = ({ scoreData }) => {
+  const data = [
+    { name: "Score", value: scoreData },
+    { name: "EmptyFraction", value: 1 - scoreData },
+  ];
+
   return (
-    <PieChart width={800} height={400} className="score">
+    <PieChart width={400} height={400} className="score">
       <Pie
-        data={scoreData}
+        data={data}
         cx={120}
         cy={200}
         innerRadius={60}
@@ -14,12 +19,12 @@ function Score(scoreData) {
         dataKey="value"
         fill="#8884d8"
       >
-        {/* {scoreData.map((index) => (
-          <Cell key={`cell-${index}`} fill={"#83a6ed"} />
-        ))} */}
+        {data.map((value) => (
+          <Cell key={`cell-${value}`} fill={"#83a6ed"} />
+        ))}
       </Pie>
     </PieChart>
   );
-}
+};
 
 export default Score;
