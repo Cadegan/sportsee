@@ -2,9 +2,27 @@ import React from "react";
 import { PieChart, Pie, Cell } from "recharts";
 
 const Score = ({ scoreData }) => {
+  const formatScore = (todayScore, score) => {
+    let scoreStored;
+    // scoreData === todayScore
+    //   ? (scoreStored = todayScore)
+    //   : (scoreStored = score);
+
+    todayScore === undefined
+      ? (scoreStored = score)
+      : (scoreStored = todayScore);
+
+    if (scoreStored === undefined) {
+      scoreStored = 0;
+    }
+    return scoreStored;
+  };
+
+  const scoreFormatted = formatScore(scoreData.todayScore, scoreData.score);
+
   const data = [
-    { name: "Score", value: scoreData },
-    { name: "EmptyFraction", value: 1 - scoreData },
+    { name: "Score", value: scoreFormatted },
+    { name: "EmptyFraction", value: 1 - scoreFormatted },
   ];
 
   return (
@@ -13,14 +31,18 @@ const Score = ({ scoreData }) => {
         data={data}
         cx={120}
         cy={200}
-        innerRadius={60}
+        innerRadius={65}
         outerRadius={80}
-        paddingAngle={5}
+        paddingAngle={0}
+        cornerRadius={10}
+        stroke="none"
         dataKey="value"
-        fill="#8884d8"
       >
-        {data.map((value) => (
-          <Cell key={`cell-${value}`} fill={"#83a6ed"} />
+        {data.map((value, index) => (
+          <Cell
+            key={`cell-${value}`}
+            fill={index === 1 ? "#FBFBFB" : "#FF0000"}
+          />
         ))}
       </Pie>
     </PieChart>

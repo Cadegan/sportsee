@@ -34,7 +34,7 @@ function DashBoard() {
           <section className="charts">
             <div className="goal">Durée moyenne des sessions</div>
             <div className="radar">Radar</div>
-            <div className="kpi">Score / kpi</div>
+            <Score scoreData={data} />
           </section>
         </div>
 
@@ -44,7 +44,6 @@ function DashBoard() {
           carbohydrateCount={data.keyData.carbohydrateCount}
           lipidCount={data.keyData.lipidCount}
         />
-        <Score scoreData={data.score} />
       </div>
     </div>
   ) : null;
