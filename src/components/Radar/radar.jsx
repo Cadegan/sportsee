@@ -5,7 +5,6 @@ import {
   RadarChart,
   PolarGrid,
   PolarAngleAxis,
-  PolarRadiusAxis,
   ResponsiveContainer,
 } from "recharts";
 
@@ -32,33 +31,20 @@ function RadarStats() {
   return (
     radarData.length && (
       <div className="radarContainer">
-        <ResponsiveContainer width="99%" height="99%">
+        <ResponsiveContainer width="99%">
           <RadarChart
             data={radarData}
-            // position="center"
-            // cx="50%"
-            // cy="50%"
-            // outerRadius={150}
-            // width={250}
-            // height={250}
-            // margin={30}
-            // width={500}
-            // height={500}
+            outerRadius="80%"
+            margin={{ top: 0, right: 50, bottom: 0, left: 20 }}
+            cx="50%"
+            cy="50%"
           >
             <PolarGrid radialLines={false} />
             <PolarAngleAxis
               dataKey="subject"
               stroke="white"
               tickLine={false}
-              fontSize={14}
-            />
-            <PolarRadiusAxis
-              angle={30}
-              type="number"
-              tick={false}
-              axisLine={false}
-              tickCount="6"
-              line="0"
+              fontSize={10}
             />
             <Radar dataKey="A" fill="#ff0000" fillOpacity={0.6} />
           </RadarChart>
