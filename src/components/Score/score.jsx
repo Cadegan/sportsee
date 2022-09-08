@@ -54,7 +54,7 @@ const Score = ({ scoreData }) => {
             data={data}
             cx="50%"
             cy="50%"
-            innerRadius={65}
+            innerRadius={70}
             outerRadius={80}
             paddingAngle={0}
             cornerRadius={10}
@@ -77,15 +77,7 @@ const Score = ({ scoreData }) => {
             >
               Score
             </Label>
-            <Label
-              // dominantBaseline="middle"
-              // className="rateScoreText"
-              // fontWeight={700}
-              content={scoreShow}
-              position="center"
-            >
-              {/* {`${rateScoreText}%${"\n"}`} */}
-            </Label>
+            <Label content={scoreShow} position="center"></Label>
           </Pie>
         </PieChart>
       </ResponsiveContainer>

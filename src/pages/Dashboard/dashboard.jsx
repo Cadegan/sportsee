@@ -6,6 +6,7 @@ import { getUser } from "../../services/API";
 import WelCome from "../../components/Welcome/welcome";
 import SideInformations from "../../components/Informations/informations";
 import Score from "../../components/Score/score";
+import RadarStats from "../../components/Radar/radar";
 
 function DashBoard() {
   const { id } = useParams();
@@ -33,7 +34,7 @@ function DashBoard() {
           <section className="bodyWeight">Activité quotidienne</section>
           <section className="charts">
             <div className="goalTimer">Durée moyenne des sessions</div>
-            <div className="radar">Radar</div>
+            <RadarStats />
             <Score scoreData={data} />
           </section>
         </div>
