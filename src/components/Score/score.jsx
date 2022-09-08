@@ -64,7 +64,7 @@ const Score = ({ scoreData }) => {
             {data.map((value, index) => (
               <Cell
                 key={`cell-${value}`}
-                fill={index === 1 ? "#FBFBFB" : "#FF0000"}
+                fill={index === 1 ? "#ffffff" : "#FF0000"}
               />
             ))}
             <Label
