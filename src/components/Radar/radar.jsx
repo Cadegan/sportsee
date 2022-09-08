@@ -8,46 +8,25 @@ import {
   PolarRadiusAxis,
 } from "recharts";
 
-const data = [
-  {
-    subject: "Math",
-    A: 120,
-    B: 110,
-    fullMark: 150,
-  },
-  {
-    subject: "Chinese",
-    A: 98,
-    B: 130,
-    fullMark: 150,
-  },
-  {
-    subject: "English",
-    A: 86,
-    B: 130,
-    fullMark: 150,
-  },
-  {
-    subject: "Geography",
-    A: 99,
-    B: 100,
-    fullMark: 150,
-  },
-  {
-    subject: "Physics",
-    A: 85,
-    B: 90,
-    fullMark: 150,
-  },
-  {
-    subject: "History",
-    A: 65,
-    B: 85,
-    fullMark: 150,
-  },
-];
+import { getUserPerformance } from "../../services/API";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
-export default function RadarStats() {
+function RadarStats() {
+  const { id } = useParams();
+  const [radarData, setRadarData] = useState([]);
+
+  useEffect(() => {
+    /*  Data from API service */
+    getUserPerformance(id).then((items) => {
+      const formattedData = items.data.data.map((subject) => ({
+        subject: items.data.kind[subject.kind],
+        A: subject.value,
+      }));
+      setRadarData(formattedData);
+    });
+  }, [id]);
+
   return (
     <RadarChart
       cx={300}
@@ -55,18 +34,14 @@ export default function RadarStats() {
       outerRadius={150}
       width={500}
       height={500}
-      data={data}
+      data={radarData}
     >
       <PolarGrid />
       <PolarAngleAxis dataKey="subject" />
       <PolarRadiusAxis />
-      <Radar
-        name="Mike"
-        dataKey="B"
-        stroke="#8884d8"
-        fill="#8884d8"
-        fillOpacity={0.6}
-      />
+      <Radar dataKey="A" stroke="#8884d8" fill="#8884d8" fillOpacity={0.6} />
     </RadarChart>
   );
 }
+
+export default RadarStats;
