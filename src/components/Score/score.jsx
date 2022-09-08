@@ -1,5 +1,5 @@
 import React from "react";
-import { PieChart, Pie, Cell, Label } from "recharts";
+import { PieChart, Pie, Cell, Label, ResponsiveContainer } from "recharts";
 
 /**
  * If todayScore is undefined, then set scoreStored to score, otherwise set scoreStored to todayScore
@@ -33,59 +33,63 @@ const Score = ({ scoreData }) => {
     const { cx, cy } = viewBox;
     return (
       <>
-        <text x={cx - 15} y={cy - 5}>
-          <tspan className="rateScore">{scoreFormatted * 100}%</tspan>
+        <text x={cx - 19} y={cy - 5}>
+          <tspan className="rateScoreText">{scoreFormatted * 100}%</tspan>
         </text>
-        <text x={cx - 20} y={cy + 15}>
-          <tspan className="your">de votre</tspan>
+        <text x={cx - 26} y={cy + 15}>
+          <tspan className="yourText">de votre</tspan>
         </text>
-        <text x={cx - 19} y={cy + 35}>
-          <tspan className="goal">objectif</tspan>
+        <text x={cx - 25} y={cy + 35}>
+          <tspan className="goalText">objectif</tspan>
         </text>
       </>
     );
   };
 
   return (
-    <PieChart width={200} height={200} className="score">
-      <Pie
-        data={data}
-        cx="50%"
-        cy="50%"
-        innerRadius={65}
-        outerRadius={80}
-        paddingAngle={0}
-        cornerRadius={10}
-        stroke="none"
-        dataKey="value"
-      >
-        {data.map((value, index) => (
-          <Cell
-            key={`cell-${value}`}
-            fill={index === 1 ? "#FBFBFB" : "#FF0000"}
-          />
-        ))}
-        <Label
-          position="center"
-          dx={-60}
-          dy={-100}
-          dominantBaseline="middle"
-          className="scoreLabel"
-          fontSize={15}
-        >
-          Score
-        </Label>
-        <Label
-          // dominantBaseline="middle"
-          // position="center"
-          // className="rateScoreText"
-          // fontWeight={700}
-          content={scoreShow}
-        >
-          {/* {`${rateScoreText}%${"\n"}`} */}
-        </Label>
-      </Pie>
-    </PieChart>
+    <div className="container">
+      <ResponsiveContainer width="100%" height="100%">
+        <PieChart className="score">
+          <Pie
+            data={data}
+            cx="50%"
+            cy="50%"
+            innerRadius={65}
+            outerRadius={80}
+            paddingAngle={0}
+            cornerRadius={10}
+            stroke="none"
+            dataKey="value"
+          >
+            {data.map((value, index) => (
+              <Cell
+                key={`cell-${value}`}
+                fill={index === 1 ? "#FBFBFB" : "#FF0000"}
+              />
+            ))}
+            <Label
+              className="scoreLabelTitle"
+              dx={-60}
+              dy={-100}
+              dominantBaseline="middle"
+              position="center"
+              fontSize={15}
+            >
+              Score
+            </Label>
+            <Label
+              // dominantBaseline="middle"
+              // className="rateScoreText"
+              // fontWeight={700}
+              content={scoreShow}
+              position="center"
+            >
+              {/* {`${rateScoreText}%${"\n"}`} */}
+            </Label>
+          </Pie>
+        </PieChart>
+      </ResponsiveContainer>
+    </div>
   );
 };
 
