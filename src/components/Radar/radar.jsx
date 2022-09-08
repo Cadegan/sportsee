@@ -6,6 +6,7 @@ import {
   PolarGrid,
   PolarAngleAxis,
   PolarRadiusAxis,
+  ResponsiveContainer,
 } from "recharts";
 
 import { getUserPerformance } from "../../services/API";
@@ -30,36 +31,39 @@ function RadarStats() {
 
   return (
     radarData.length && (
-      <RadarChart
-        cx={300}
-        cy={250}
-        outerRadius={150}
-        width={500}
-        height={500}
-        data={radarData}
-      >
-        <PolarGrid radialLines={false} />
-        <PolarAngleAxis
-          dataKey="subject"
-          stroke="white"
-          tickLine={false}
-          fontSize={14}
-        />
-        <PolarRadiusAxis
-          angle={30}
-          type="number"
-          tick={false}
-          axisLine={false}
-          tickCount="6"
-          line="0"
-        />
-        <Radar
-          dataKey="A"
-          fill="#ff0000"
-          fillOpacity={0.6}
-          //   gridLines="#ff0000"
-        />
-      </RadarChart>
+      <div className="radarContainer">
+        <ResponsiveContainer width="99%" height="99%">
+          <RadarChart
+            data={radarData}
+            // position="center"
+            // cx="50%"
+            // cy="50%"
+            // outerRadius={150}
+            // width={250}
+            // height={250}
+            // margin={30}
+            // width={500}
+            // height={500}
+          >
+            <PolarGrid radialLines={false} />
+            <PolarAngleAxis
+              dataKey="subject"
+              stroke="white"
+              tickLine={false}
+              fontSize={14}
+            />
+            <PolarRadiusAxis
+              angle={30}
+              type="number"
+              tick={false}
+              axisLine={false}
+              tickCount="6"
+              line="0"
+            />
+            <Radar dataKey="A" fill="#ff0000" fillOpacity={0.6} />
+          </RadarChart>
+        </ResponsiveContainer>
+      </div>
     )
   );
 }

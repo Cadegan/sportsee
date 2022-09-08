@@ -47,8 +47,8 @@ const Score = ({ scoreData }) => {
   };
 
   return (
-    <div className="container">
-      <ResponsiveContainer width="100%" height="100%">
+    <div className="scoreContainer">
+      <ResponsiveContainer width="99%" height="99%">
         <PieChart className="score">
           <Pie
             data={data}
