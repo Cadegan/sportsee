@@ -33,7 +33,7 @@ function DashBoard() {
         <div className="centerInformations">
           <section className="bodyWeight">Activité quotidienne</section>
           <section className="charts">
-            <div className="goalTimer">Durée moyenne des sessions</div>
+            <div className="averageSessions">Durée moyenne des sessions</div>
             <RadarStats />
             <Score scoreData={data} />
           </section>

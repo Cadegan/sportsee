@@ -1,4 +1,3 @@
-// import "./styles.css";
 import React from "react";
 import {
   Radar,
@@ -19,12 +18,11 @@ function RadarStats() {
   useEffect(() => {
     /*  Data from API service */
     getUserPerformance(id).then((items) => {
-      const formattedData = items.data.data.map((subject) => ({
+      const dataMapped = items.data.data.map((subject) => ({
         subject: items.data.kind[subject.kind],
-        A: subject.value,
-        userInfos: items.userId,
+        subjectValue: subject.value,
       }));
-      setRadarData(formattedData);
+      setRadarData(dataMapped);
     });
   }, [id]);
 
@@ -40,7 +38,7 @@ function RadarStats() {
               tickLine={false}
               fontSize={10}
             />
-            <Radar dataKey="A" fill="#ff0000" fillOpacity={0.6} />
+            <Radar dataKey="subjectValue" fill="#ff0000" fillOpacity={0.6} />
           </RadarChart>
         </ResponsiveContainer>
       </div>
