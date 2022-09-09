@@ -18,11 +18,12 @@ function RadarStats() {
   useEffect(() => {
     /*  Data from API service */
     getUserPerformance(id).then((items) => {
-      const dataMapped = items.data.data.map((subject) => ({
-        subject: items.data.kind[subject.kind],
-        subjectValue: subject.value,
+      const dataMapped = items.data.data.map((element) => ({
+        subject: items.data.kind[element.kind],
+        subjectValue: element.value,
       }));
       setRadarData(dataMapped);
+      // console.log(dataMapped);
     });
   }, [id]);
 

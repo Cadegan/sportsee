@@ -15,19 +15,19 @@ import { getUserAverageSessions } from "../../services/API";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-export default function GoalTimer() {
+function AverageSessions() {
   const { id } = useParams();
   const [sessionsData, setSessionsData] = useState([]);
 
   useEffect(() => {
     /*  Data from API service */
-    getUserAverageSessions(id).then((items) => {
-      const formattedData = items.data.data.map((day) => ({
-        day: items.data.sessions[day.sessions],
-        sessionValue: day.value,
-        userInfos: items.userId,
+    getUserAverageSessions(id).then((data) => {
+      const formattedData = data.data.sessions.map((items) => ({
+        day: items.day,
+        periode: items.sessionLength,
       }));
       setSessionsData(formattedData);
+      console.log(formattedData);
     });
   }, [id]);
 
@@ -51,7 +51,7 @@ export default function GoalTimer() {
         <Legend />
         <Line
           type="monotone"
-          dataKey="A"
+          dataKey="periode"
           stroke="#8884d8"
           activeDot={{ r: 8 }}
         />
@@ -60,3 +60,5 @@ export default function GoalTimer() {
     )
   );
 }
+
+export default AverageSessions;
