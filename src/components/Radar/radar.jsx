@@ -32,13 +32,7 @@ function RadarStats() {
     radarData.length && (
       <div className="radarContainer">
         <ResponsiveContainer width="99%">
-          <RadarChart
-            data={radarData}
-            outerRadius="80%"
-            margin={{ top: 0, right: 50, bottom: 0, left: 20 }}
-            cx="50%"
-            cy="50%"
-          >
+          <RadarChart data={radarData} cx="50%" cy="50%" outerRadius="60%">
             <PolarGrid radialLines={false} />
             <PolarAngleAxis
               dataKey="subject"
