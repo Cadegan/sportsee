@@ -27,8 +27,6 @@ const Score = ({ scoreData }) => {
     { name: "EmptyFraction", value: 1 - scoreFormatted },
   ];
 
-  // const rateScoreText = scoreFormatted * 100;
-
   const scoreShow = ({ viewBox }) => {
     const { cx, cy } = viewBox;
     return (

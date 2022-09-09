@@ -1,15 +1,7 @@
 /* Demo */
 
 import React from "react";
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-} from "recharts";
+import { LineChart, Line, XAxis, YAxis, Tooltip, Rectangle } from "recharts";
 
 import { getUserAverageSessions } from "../../services/API";
 import { useEffect, useState } from "react";
@@ -24,19 +16,44 @@ function AverageSessions() {
     getUserAverageSessions(id).then((data) => {
       const formattedData = data.data.sessions.map((items) => ({
         day: items.day,
-        periode: items.sessionLength,
+        activity: items.sessionLength,
       }));
       setSessionsData(formattedData);
       console.log(formattedData);
     });
   }, [id]);
 
+  /**
+   * It takes a number as an argument and returns the corresponding day of the week
+   * @returns The day of the week.
+   */
+  function dayFormatter(num) {
+    const week = ["L", "M", "M", "J", "V", "S", "D"];
+    return week[+num - 1];
+  }
+
+  const CustomCursor = (props) => {
+    const { points, width, height } = props;
+    const { x, y } = points[0];
+    // console.log(props);
+    return (
+      <Rectangle
+        fill="red"
+        // stroke="red"
+        x={x}
+        y={y}
+        width={width}
+        height={height}
+      />
+    );
+  };
+
   return (
     sessionsData.length && (
       <LineChart
+        data={sessionsData}
         width={500}
         height={300}
-        data={sessionsData}
         margin={{
           top: 5,
           right: 30,
@@ -44,18 +61,33 @@ function AverageSessions() {
           bottom: 5,
         }}
       >
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="day" />
-        <YAxis />
-        <Tooltip />
-        <Legend />
-        <Line
-          type="monotone"
-          dataKey="periode"
-          stroke="#8884d8"
-          activeDot={{ r: 8 }}
+        <XAxis
+          dataKey="day"
+          tickFormatter={dayFormatter}
+          axisLine={false}
+          tickLine={false}
         />
-        <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
+        <YAxis axisLine={false} tickLine={false} allowDataOverflow={true} />
+        <Tooltip
+          cursor={<CustomCursor />}
+          animationEasing="ease-out"
+          labelFormatter={() => ``}
+          formatter={(value) => [value + " min"]}
+          contentStyle={{ border: "none", padding: 0 }}
+          itemStyle={{
+            color: "black",
+            backgroundColor: "white",
+            padding: 12,
+          }}
+        />
+        {/* <Legend /> */}
+        <Line
+          dataKey="activity"
+          type="natural"
+          stroke="white"
+          activeDot={{ r: 8 }}
+          dot={false}
+        />
       </LineChart>
     )
   );
