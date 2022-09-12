@@ -173,6 +173,13 @@ a {
   border-radius: 5px;
 }
 
+.AverageSessionsContainer {
+  background-color: #FF0000;
+  width: 270px;
+  height: 270px;
+  border-radius: 5px;
+}
+
 .containerUsers {
   display: flex;
   flex-direction: column;

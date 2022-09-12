@@ -1,7 +1,16 @@
 /* Demo */
 
 import React from "react";
-import { LineChart, Line, XAxis, YAxis, Tooltip, Rectangle } from "recharts";
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  Tooltip,
+  Rectangle,
+  ResponsiveContainer,
+  Legend,
+} from "recharts";
 
 import { getUserAverageSessions } from "../../services/API";
 import { useEffect, useState } from "react";
@@ -33,62 +42,93 @@ function AverageSessions() {
   }
 
   const CustomCursor = (props) => {
-    const { points, width, height } = props;
+    const { points } = props;
     const { x, y } = points[0];
-    // console.log(props);
     return (
       <Rectangle
-        fill="red"
-        // stroke="red"
+        fill="black"
+        fillOpacity={0.1}
         x={x}
-        y={y}
-        width={width}
-        height={height}
+        y={y - 100}
+        width={400}
+        height={400}
       />
+    );
+  };
+
+  const lengendText = () => {
+    return (
+      <div
+        style={{
+          color: "white",
+          marginTop: "20px",
+          marginLeft: "20px",
+          opacity: ".5",
+          position: "relative",
+        }}
+      >
+        Durée moyenne des
+        <br />
+        sessions
+      </div>
     );
   };
 
   return (
     sessionsData.length && (
-      <LineChart
-        data={sessionsData}
-        width={500}
-        height={300}
-        margin={{
-          top: 5,
-          right: 30,
-          left: 20,
-          bottom: 5,
-        }}
-      >
-        <XAxis
-          dataKey="day"
-          tickFormatter={dayFormatter}
-          axisLine={false}
-          tickLine={false}
-        />
-        <YAxis axisLine={false} tickLine={false} allowDataOverflow={true} />
-        <Tooltip
-          cursor={<CustomCursor />}
-          animationEasing="ease-out"
-          labelFormatter={() => ``}
-          formatter={(value) => [value + " min"]}
-          contentStyle={{ border: "none", padding: 0 }}
-          itemStyle={{
-            color: "black",
-            backgroundColor: "white",
-            padding: 12,
-          }}
-        />
-        {/* <Legend /> */}
-        <Line
-          dataKey="activity"
-          type="natural"
-          stroke="white"
-          activeDot={{ r: 8 }}
-          dot={false}
-        />
-      </LineChart>
+      <div className="AverageSessionsContainer">
+        <ResponsiveContainer width="100%">
+          <LineChart
+            data={sessionsData}
+            margin={{
+              top: 5,
+              right: 10,
+              left: 10,
+              bottom: 5,
+            }}
+          >
+            <XAxis
+              dataKey="day"
+              tickFormatter={dayFormatter}
+              axisLine={false}
+              tickLine={false}
+              stroke="white"
+              opacity={0.5}
+            />
+            <YAxis
+              axisLine={false}
+              tickLine={false}
+              allowDataOverflow={true}
+              hide={true}
+            />
+            <Tooltip
+              cursor={<CustomCursor />}
+              animationEasing="ease-out"
+              labelFormatter={() => ``}
+              formatter={(value) => [value + " min"]}
+              contentStyle={{ border: "none", padding: 0 }}
+              itemStyle={{
+                color: "black",
+                backgroundColor: "white",
+                padding: 12,
+              }}
+            />
+            <Line
+              dataKey="activity"
+              type="natural"
+              stroke="#FFFFFF"
+              activeDot={{ r: 8 }}
+              dot={false}
+            />
+            <Legend
+              verticalAlign="top"
+              align="left"
+              // iconSize={0}
+              content={lengendText}
+            ></Legend>
+          </LineChart>
+        </ResponsiveContainer>
+      </div>
     )
   );
 }
