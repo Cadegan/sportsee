@@ -1,5 +1,3 @@
-/* Demo */
-
 import React from "react";
 import {
   LineChart,
@@ -28,7 +26,7 @@ function AverageSessions() {
         activity: items.sessionLength,
       }));
       setSessionsData(formattedData);
-      console.log(formattedData);
+      // console.log(formattedData);
     });
   }, [id]);
 

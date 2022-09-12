@@ -8,6 +8,7 @@ import SideInformations from "../../components/Informations/informations";
 import Score from "../../components/Score/score";
 import RadarStats from "../../components/Radar/radar";
 import AverageSessions from "../../components/Sessions/averageSessions";
+import Activities from "../../components/Activity/activity";
 
 function DashBoard() {
   const { id } = useParams();
@@ -32,7 +33,7 @@ function DashBoard() {
       <WelCome firstName={data.userInfos.firstName} />
       <div className="globalInformations">
         <div className="centerInformations">
-          <section className="bodyWeight">Activité quotidienne</section>
+          <Activities />
           <section className="charts">
             <AverageSessions />
             <RadarStats />
