@@ -131,7 +131,6 @@ function AverageSessions() {
               type="natural"
               stroke="#FFFFFF"
               strokeWidth={2}
-              // activeDot={{ r: 8 }}
               activeDot={<CustomizedDot />}
               dot={false}
             />

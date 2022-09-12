@@ -173,10 +173,17 @@ a {
   border-radius: 5px;
 }
 
+/* Average */
 .AverageSessionsContainer {
   background-color: #FF0000;
   width: 270px;
   height: 270px;
+  border-radius: 5px;
+}
+
+/* Activities */
+.activityContainer {
+  background-color: #FBFBFB;
   border-radius: 5px;
 }
 
