@@ -74,6 +74,21 @@ function AverageSessions() {
     );
   };
 
+  const CustomizedDot = (props) => {
+    const { cx, cy } = props;
+
+    return (
+      <circle
+        cx={cx}
+        cy={cy}
+        r={6}
+        stroke="rgb(255, 255, 255, 0.2)"
+        strokeWidth={15}
+        fill="white"
+      />
+    );
+  };
+
   return (
     sessionsData.length && (
       <div className="AverageSessionsContainer">
@@ -117,13 +132,14 @@ function AverageSessions() {
               dataKey="activity"
               type="natural"
               stroke="#FFFFFF"
-              activeDot={{ r: 8 }}
+              strokeWidth={2}
+              // activeDot={{ r: 8 }}
+              activeDot={<CustomizedDot />}
               dot={false}
             />
             <Legend
               verticalAlign="top"
               align="left"
-              // iconSize={0}
               content={lengendText}
             ></Legend>
           </LineChart>
