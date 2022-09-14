@@ -22,6 +22,7 @@ function Activities() {
     /*  Data from API service */
     getUserActivity(id).then((data) => {
       const activityData = data.data.sessions.map((items) => ({
+        // day: items.day.getDay(),
         day: items.day,
         weight: items.kilogram,
         calories: items.calories,
@@ -43,6 +44,10 @@ function Activities() {
     return null;
   };
 
+  function dayFormatter(value) {
+    return value + 1;
+  }
+
   return (
     sessionsData.length && (
       <div className="activityContainer">
@@ -53,8 +58,13 @@ function Activities() {
               vertical={false}
               stroke="#DEDEDE"
             />
-            <XAxis dataKey="day" />
-            <YAxis />
+            <XAxis dataKey="day" tickFormatter={dayFormatter} />
+            <YAxis
+              orientation="right"
+              tickLine={false}
+              axisLine={false}
+              tickCount={3}
+            />
             <Tooltip
               content={<CustomTooltip payload={sessionsData} />}
               animationEasing="ease-out"
