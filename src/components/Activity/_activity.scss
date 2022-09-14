@@ -1,9 +1,23 @@
 /* Activities */
-
 .activityContainer {
     background-color: #FBFBFB;
 
     // width: 100%;
     // height: 270px;
     border-radius: 5px;
+}
+
+.activityTooltip {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 39px;
+    height: 63px;
+    background: #E60000;
+    color: white;
+    border-radius: 0px;
+    padding: 10px;
+    font-size: 10px;
+    font-weight: 500;
+    text-align: center;
 }

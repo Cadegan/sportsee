@@ -27,47 +27,57 @@ function Activities() {
         calories: items.calories,
       }));
       setSessionsData(activityData);
-      //   console.log(activityData);
+      console.log(activityData);
     });
   }, [id]);
+
+  const CustomTooltip = ({ active, payload }) => {
+    if (active && payload) {
+      return (
+        <div className="activityTooltip">
+          <p className="weightLabel">{payload[0].value}kg</p>
+          <p className="caloriesLabel">{payload[1].value}Kcal</p>
+        </div>
+      );
+    }
+    return null;
+  };
 
   return (
     sessionsData.length && (
       <div className="activityContainer">
         <ResponsiveContainer width={"99%"} height={300}>
-          <BarChart
-            data={sessionsData}
-            // margin={{
-            //   top: 5,
-            //   right: 30,
-            //   left: 20,
-            //   bottom: 5,
-            // }}
-          >
-            <CartesianGrid strokeDasharray="3 3" />
+          <BarChart data={sessionsData}>
+            <CartesianGrid
+              strokeDasharray="3 3"
+              vertical={false}
+              stroke="#DEDEDE"
+            />
             <XAxis dataKey="day" />
             <YAxis />
             <Tooltip
+              content={<CustomTooltip payload={sessionsData} />}
               animationEasing="ease-out"
-              labelFormatter={() => ``}
-              itemStyle={{
-                color: "white",
-                backgroundColor: "#E60000",
-              }}
+              wrapperStyle={{ left: 50, top: -20 }}
             />
             <Legend
               className="activityLabel"
               verticalAlign="top"
               align="right"
               iconType="circle"
-              // dx={-60}
-              // dy={-100}
-              // dominantBaseline="middle"
-              // position="center"
-              // fontSize={15}
             />
-            <Bar dataKey="weight" fill="#282D30" />
-            <Bar dataKey="calories" fill="#E60000" />
+            <Bar
+              dataKey="weight"
+              fill="#282D30"
+              barSize={7}
+              radius={[3, 3, 0, 0]}
+            />
+            <Bar
+              dataKey="calories"
+              fill="#E60000"
+              barSize={7}
+              radius={[3, 3, 0, 0]}
+            />
           </BarChart>
         </ResponsiveContainer>
       </div>
