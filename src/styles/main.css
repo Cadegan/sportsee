@@ -13,7 +13,7 @@ a {
 
 /* Header */
 .header {
-  width: 100%;
+  width: 100vw;
   height: 91px;
   background-color: #020203;
   display: flex;
@@ -41,7 +41,7 @@ a {
   flex-direction: column;
   background: black;
   width: 117px;
-  height: 100%;
+  height: 100vh;
   align-items: center;
   position: absolute;
   top: 0px;
@@ -82,12 +82,12 @@ a {
 
 /* Welcome */
 .welComeMessage {
-  margin-bottom: 77px;
+  margin-bottom: 40px;
 }
 
 .welComeFirstName {
   font-size: 48px;
-  margin-bottom: 31px;
+  margin-bottom: 24px;
 }
 .welComeFirstName .firstName {
   color: #FF0101;
@@ -96,6 +96,9 @@ a {
 /* Side informations */
 .sideInformations {
   margin-left: 3%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .sideInformationsContainer {
@@ -103,7 +106,6 @@ a {
   width: 258px;
   height: 124px;
   align-items: center;
-  margin-bottom: 25px;
   background-color: #FBFBFB;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.02);
   border-radius: 5px;
@@ -190,6 +192,7 @@ a {
   background-color: #FBFBFB;
   border-radius: 5px;
   padding: 24px 32px 24px 32px;
+  margin-bottom: 30px;
 }
 
 .activityTooltip {

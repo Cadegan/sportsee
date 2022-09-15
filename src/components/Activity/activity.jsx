@@ -51,19 +51,24 @@ function Activities() {
     sessionsData.length && (
       <div className="activityContainer">
         <div className="activityContainerTitle">Activité quotidienne</div>
-        <ResponsiveContainer width={"99%"} height={300}>
+        <ResponsiveContainer width={"99%"} height={210}>
           <BarChart data={sessionsData}>
             <CartesianGrid
               strokeDasharray="3 3"
               vertical={false}
               stroke="#DEDEDE"
             />
-            <XAxis dataKey="day" tickFormatter={dayFormatter} />
+            <XAxis
+              dataKey="day"
+              tickFormatter={dayFormatter}
+              stroke="#9B9EAC"
+            />
             <YAxis
               orientation="right"
               tickLine={false}
               axisLine={false}
               tickCount={3}
+              stroke="#9B9EAC"
             />
             <Tooltip
               content={<CustomTooltip payload={sessionsData} />}
@@ -75,7 +80,7 @@ function Activities() {
               verticalAlign="top"
               align="right"
               iconType="circle"
-              wrapperStyle={{ left: -10, top: -20 }}
+              wrapperStyle={{ left: -10, top: -25 }}
               formatter={(value) => (
                 <span className="textColorLegend">{value}</span>
               )}
