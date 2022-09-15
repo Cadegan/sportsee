@@ -7,26 +7,22 @@
 }
 
 .dashBoard {
-    // display: flex;
-    // justify-content: center;
     position: absolute;
-    margin-left: 117px;
+    margin-left: 224px;
+    width: 80%;
 }
 
 .globalInformations {
-    // border: dotted;
     display: flex;
+    justify-content: space-between;
+}
 
-    .centerInformations {
-        // background-color: aquamarine;
-        // border: solid;
+.centerInformations {
+    position: relative;
+    width: 70%;
+    height: 88%;
+}
 
-        .bodyWeight {
-            border: groove;
-        }
-
-        .charts {
-            display: flex;
-        }
-    }
+.charts {
+    display: flex;
 }

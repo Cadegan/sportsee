@@ -1,1 +1,1 @@
-.statSection{position:absolute;top:50%;left:50%}.dashBoard{position:absolute;margin-left:117px}.globalInformations{display:flex}.globalInformations .centerInformations .bodyWeight{border:groove}.globalInformations .centerInformations .charts{display:flex}
+.statSection{position:absolute;top:50%;left:50%}.dashBoard{position:absolute;margin-left:224px;width:80%}.globalInformations{display:flex;justify-content:space-between}.centerInformations{position:relative;width:70%;height:88%}.charts{display:flex}

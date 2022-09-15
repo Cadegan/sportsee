@@ -205,10 +205,18 @@ a {
 
 .activityContainerTitle {
   color: #20253A;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 24px;
 }
 
 .textColorLegend {
   color: #74798C;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
 }
 
 .containerUsers {
@@ -236,15 +244,21 @@ a {
 
 .dashBoard {
   position: absolute;
-  margin-left: 117px;
+  margin-left: 224px;
+  width: 80%;
 }
 
 .globalInformations {
   display: flex;
+  justify-content: space-between;
 }
-.globalInformations .centerInformations .bodyWeight {
-  border: groove;
+
+.centerInformations {
+  position: relative;
+  width: 70%;
+  height: 88%;
 }
-.globalInformations .centerInformations .charts {
+
+.charts {
   display: flex;
 }/*# sourceMappingURL=main.css.map */
