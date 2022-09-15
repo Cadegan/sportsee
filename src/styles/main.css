@@ -87,13 +87,17 @@ a {
 
 .welComeFirstName {
   font-size: 48px;
-  margin-bottom: 41px;
+  margin-bottom: 31px;
 }
 .welComeFirstName .firstName {
   color: #FF0101;
 }
 
 /* Side informations */
+.sideInformations {
+  margin-left: 3%;
+}
+
 .sideInformationsContainer {
   display: flex;
   width: 258px;
@@ -146,7 +150,7 @@ a {
 
 /* Score */
 .scoreContainer {
-  width: 270px;
+  width: 30%;
   height: 270px;
   border-radius: 5px;
   background-color: #FBFBFB;
@@ -168,15 +172,15 @@ a {
 /* Radar */
 .radarContainer {
   background-color: #282D30;
-  width: 270px;
+  width: 30%;
   height: 270px;
   border-radius: 5px;
 }
 
-/* Average */
+/* Average sessions*/
 .AverageSessionsContainer {
   background-color: #FF0000;
-  width: 270px;
+  width: 30%;
   height: 270px;
   border-radius: 5px;
 }
@@ -244,7 +248,8 @@ a {
 
 .dashBoard {
   position: absolute;
-  margin-left: 224px;
+  left: 224px;
+  top: 138px;
   width: 80%;
 }
 
@@ -255,10 +260,11 @@ a {
 
 .centerInformations {
   position: relative;
-  width: 70%;
+  width: 100%;
   height: 88%;
 }
 
 .charts {
   display: flex;
+  justify-content: space-between;
 }/*# sourceMappingURL=main.css.map */

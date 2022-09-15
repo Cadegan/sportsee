@@ -90,7 +90,7 @@ function AverageSessions() {
   return (
     sessionsData.length && (
       <div className="AverageSessionsContainer">
-        <ResponsiveContainer width="100%">
+        <ResponsiveContainer width="99%">
           <LineChart
             data={sessionsData}
             margin={{
