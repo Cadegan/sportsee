@@ -22,7 +22,6 @@ function Activities() {
     /*  Data from API service */
     getUserActivity(id).then((data) => {
       const activityData = data.data.sessions.map((items) => ({
-        // day: items.day.getDay(),
         day: items.day,
         weight: items.kilogram,
         calories: items.calories,
@@ -45,12 +44,13 @@ function Activities() {
   };
 
   function dayFormatter(value) {
-    return value + 1;
+    return new Date(value).getDate();
   }
 
   return (
     sessionsData.length && (
       <div className="activityContainer">
+        <div className="activityContainerTitle">Activité quotidienne</div>
         <ResponsiveContainer width={"99%"} height={300}>
           <BarChart data={sessionsData}>
             <CartesianGrid
@@ -75,14 +75,20 @@ function Activities() {
               verticalAlign="top"
               align="right"
               iconType="circle"
+              wrapperStyle={{ left: -10, top: -20 }}
+              formatter={(value) => (
+                <span className="textColorLegend">{value}</span>
+              )}
             />
             <Bar
+              name="Poids (kg)"
               dataKey="weight"
               fill="#282D30"
               barSize={7}
               radius={[3, 3, 0, 0]}
             />
             <Bar
+              name="Calories brûlées (kCal)"
               dataKey="calories"
               fill="#E60000"
               barSize={7}
