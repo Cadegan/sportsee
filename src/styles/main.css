@@ -270,4 +270,85 @@ a {
 .charts {
   display: flex;
   justify-content: space-between;
+}
+
+/*Error page*/
+.errorMessage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 100px 0px 0px 10vh;
+  text-align: center;
+}
+.errorMessage * {
+  color: #FF0101;
+}
+.errorMessage h1 {
+  font-size: 150px;
+  font-weight: bold;
+}
+.errorMessage h2 {
+  font-size: 36px;
+  font-weight: 500;
+  width: 80%;
+}
+.errorMessage a {
+  font-size: 18px;
+  font-weight: 500;
+  text-decoration: underline;
+  margin-top: 50px;
+}
+
+@media (max-width: 768px) {
+  .errorMessage h1 {
+    font-size: 96px;
+  }
+  .errorMessage h2 {
+    font-size: 18px;
+    font-weight: 500;
+  }
+  .errorMessage a {
+    font-size: 14px;
+    margin-top: 133px;
+  }
+}
+/* CircleLoader */
+.circleLoader {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+  position: relative;
+  right: -50%;
+  transform: translate(-50%, 60%);
+}
+
+.circleLoader:after {
+  content: " ";
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid #fff;
+  border-color: red transparent red transparent;
+  -webkit-animation: circleLoader 1.2s linear infinite;
+          animation: circleLoader 1.2s linear infinite;
+}
+
+@-webkit-keyframes circleLoader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes circleLoader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }/*# sourceMappingURL=main.css.map */

@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import NavBar from "./components/Header/header";
 import Home from "./pages/Home/index";
 import DashBoard from "./pages/Dashboard/dashboard";
+import Error from "./pages/Error/error";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Home />}></Route>
         <Route exact path="/user/:id" element={<DashBoard />}></Route>
+        <Route exact path="*" element={<Error />}></Route>
         {/* <Route exact path="/" element={<Profile />}></Route>
                 <Route exact path="/" element={<About />}></Route>
                 <Route exact path="/" element={<Setting />}></Route>

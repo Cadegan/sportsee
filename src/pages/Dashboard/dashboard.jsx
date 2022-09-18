@@ -9,10 +9,13 @@ import Score from "../../components/Score/score";
 import RadarStats from "../../components/Radar/radar";
 import AverageSessions from "../../components/Sessions/averageSessions";
 import Activities from "../../components/Activity/activity";
+import Error from "../Error/error";
+import Loader from "../../components/Loader/loader";
 
 function DashBoard() {
   const { id } = useParams();
   const [data, setData] = useState(null);
+  const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
     /*  Data from mocked service */
@@ -22,14 +25,17 @@ function DashBoard() {
     // });
 
     /*  Data from API service */
+    setLoading(true);
     getUser(id).then((items) => {
       setData(items.data);
+      setLoading(false);
     });
   }, [id]);
 
   // const userScore = data.todayScore || data.score;
   return data ? (
     <div className="dashBoard">
+      {/* {isLoading && <Loader />} */}
       <WelCome firstName={data.userInfos.firstName} />
       <div className="globalInformations">
         <div className="centerInformations">
@@ -49,7 +55,9 @@ function DashBoard() {
         />
       </div>
     </div>
-  ) : null;
+  ) : (
+    <>{isLoading ? <Loader /> : <Error />}</>
+  );
 }
 
 export default DashBoard;
