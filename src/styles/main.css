@@ -312,6 +312,13 @@ a {
     margin-top: 133px;
   }
 }
+/* Module Error */
+.moduleError p {
+  font-size: 14px;
+  color: red;
+  padding: 12px;
+}
+
 /* CircleLoader */
 .circleLoader {
   display: inline-block;

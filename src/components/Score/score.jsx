@@ -1,4 +1,5 @@
 import React from "react";
+import ModuleError from "../Error/moduleError";
 import { PieChart, Pie, Cell, Label, ResponsiveContainer } from "recharts";
 
 /**
@@ -52,7 +53,7 @@ const Score = ({ scoreData }) => {
     );
   };
 
-  return (
+  return data.length ? (
     <div className="scoreContainer">
       <ResponsiveContainer width="99%" height="99%">
         <PieChart className="score">
@@ -88,6 +89,8 @@ const Score = ({ scoreData }) => {
         </PieChart>
       </ResponsiveContainer>
     </div>
+  ) : (
+    <ModuleError />
   );
 };
 

@@ -14,7 +14,7 @@ function WelCome({ firstName }) {
       </div>
       <p className="congratulations">
         Félicitation ! Vous avez explosé vos objectifs hier{" "}
-        <span role="img" aria-label="donut">
+        <span role="img" aria-label="acclaim">
           👏
         </span>
       </p>

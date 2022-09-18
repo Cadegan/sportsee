@@ -1,4 +1,6 @@
 import React from "react";
+import ModuleError from "../Error/moduleError";
+import Loader from "../../components/Loader/loader";
 import {
   LineChart,
   Line,
@@ -17,14 +19,17 @@ import { useParams } from "react-router-dom";
 function AverageSessions() {
   const { id } = useParams();
   const [sessionsData, setSessionsData] = useState([]);
+  const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
     /*  Data from API service */
+    setLoading(true);
     getUserAverageSessions(id).then((data) => {
       const formattedData = data.data.sessions.map((items) => ({
         day: items.day,
         activity: items.sessionLength,
       }));
+      setLoading(false);
       setSessionsData(formattedData);
       // console.log(formattedData);
     });
@@ -101,62 +106,62 @@ function AverageSessions() {
     );
   };
 
-  return (
-    sessionsData.length && (
-      <div className="AverageSessionsContainer">
-        <ResponsiveContainer width="99%">
-          <LineChart
-            data={sessionsData}
-            margin={{
-              top: 5,
-              right: 10,
-              left: 10,
-              bottom: 5,
+  return sessionsData.length ? (
+    <div className="AverageSessionsContainer">
+      <ResponsiveContainer width="99%">
+        <LineChart
+          data={sessionsData}
+          margin={{
+            top: 5,
+            right: 10,
+            left: 10,
+            bottom: 5,
+          }}
+        >
+          <XAxis
+            dataKey="day"
+            tickFormatter={dayFormatter}
+            axisLine={false}
+            tickLine={false}
+            stroke="white"
+            opacity={0.5}
+          />
+          <YAxis
+            axisLine={false}
+            tickLine={false}
+            allowDataOverflow={true}
+            hide={true}
+          />
+          <Tooltip
+            cursor={<CustomCursor />}
+            animationEasing="ease-out"
+            labelFormatter={() => ``}
+            formatter={(value) => [value + " min"]}
+            contentStyle={{ border: "none", padding: 0 }}
+            itemStyle={{
+              color: "black",
+              backgroundColor: "white",
+              padding: 12,
             }}
-          >
-            <XAxis
-              dataKey="day"
-              tickFormatter={dayFormatter}
-              axisLine={false}
-              tickLine={false}
-              stroke="white"
-              opacity={0.5}
-            />
-            <YAxis
-              axisLine={false}
-              tickLine={false}
-              allowDataOverflow={true}
-              hide={true}
-            />
-            <Tooltip
-              cursor={<CustomCursor />}
-              animationEasing="ease-out"
-              labelFormatter={() => ``}
-              formatter={(value) => [value + " min"]}
-              contentStyle={{ border: "none", padding: 0 }}
-              itemStyle={{
-                color: "black",
-                backgroundColor: "white",
-                padding: 12,
-              }}
-            />
-            <Line
-              dataKey="activity"
-              type="natural"
-              stroke="#FFFFFF"
-              strokeWidth={2}
-              activeDot={<CustomizedDot />}
-              dot={false}
-            />
-            <Legend
-              verticalAlign="top"
-              align="left"
-              content={lengendText}
-            ></Legend>
-          </LineChart>
-        </ResponsiveContainer>
-      </div>
-    )
+          />
+          <Line
+            dataKey="activity"
+            type="natural"
+            stroke="#FFFFFF"
+            strokeWidth={2}
+            activeDot={<CustomizedDot />}
+            dot={false}
+          />
+          <Legend
+            verticalAlign="top"
+            align="left"
+            content={lengendText}
+          ></Legend>
+        </LineChart>
+      </ResponsiveContainer>
+    </div>
+  ) : (
+    <>{isLoading ? <Loader /> : <ModuleError />}</>
   );
 }
 
