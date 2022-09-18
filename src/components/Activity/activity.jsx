@@ -14,12 +14,17 @@ import { getUserActivity } from "../../services/API";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
+/**
+ * This function returns the content of the user's activities.
+ **/
 function Activities() {
   const { id } = useParams();
   const [sessionsData, setSessionsData] = useState([]);
 
   useEffect(() => {
-    /*  Data from API service */
+    /* A function that is called when the component is mounted.
+     * It is used to get the data from the API and return data "day", "weight" and "calories"
+     */
     getUserActivity(id).then((data) => {
       const activityData = data.data.sessions.map((items) => ({
         day: items.day,
@@ -31,6 +36,10 @@ function Activities() {
     });
   }, [id]);
 
+  /**
+   * If the tooltip is active and there is data to display, display the weight and calories burned
+   * @returns A custom tooltip for the chart.
+   */
   const CustomTooltip = ({ active, payload }) => {
     if (active && payload) {
       return (
@@ -43,6 +52,10 @@ function Activities() {
     return null;
   };
 
+  /**
+   * It takes a value, which is a date, and returns the day of the month
+   * @returns The day of the month.
+   */
   function dayFormatter(value) {
     return new Date(value).getDate();
   }

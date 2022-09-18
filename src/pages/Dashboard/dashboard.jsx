@@ -12,30 +12,37 @@ import Activities from "../../components/Activity/activity";
 import Error from "../Error/error";
 import Loader from "../../components/Loader/loader";
 
+/* A function component that is used to display the dashboard. */
 function DashBoard() {
   const { id } = useParams();
   const [data, setData] = useState(null);
   const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
+    setLoading(true);
     /*  Data from mocked service */
     // mainData().then((items) => {
     //   let datas = items.find((item) => item.id === parseFloat(id));
     //   setData(datas);
+    //   setLoading(false);
     // });
 
     /*  Data from API service */
-    setLoading(true);
     getUser(id).then((items) => {
       setData(items.data);
       setLoading(false);
     });
   }, [id]);
 
-  // const userScore = data.todayScore || data.score;
+  /**
+   * If data is not null, user's data is showed in the dashBoard,
+   * Else
+   *  If data is loading, a loader is displayed,
+   * Else
+   * If data is not loading, an error is displayed.
+   */
   return data ? (
     <div className="dashBoard">
-      {/* {isLoading && <Loader />} */}
       <WelCome firstName={data.userInfos.firstName} />
       <div className="globalInformations">
         <div className="centerInformations">

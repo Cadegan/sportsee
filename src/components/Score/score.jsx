@@ -19,14 +19,22 @@ const Score = ({ scoreData }) => {
     return scoreStored;
   };
 
-  /* This is creating a pie chart with the score data. */
+  /* Store the formatted score data. */
   const scoreFormatted = formatScore(scoreData.todayScore, scoreData.score);
 
+  /**
+   * Creating an array of two objects.
+   * one to display the score portion,
+   * the other to display the empty portion.
+   */
   const data = [
     { name: "Score", value: scoreFormatted },
     { name: "EmptyFraction", value: 1 - scoreFormatted },
   ];
 
+  /**
+   * @returns A function that returns the percentage of the score.
+   */
   const scoreShow = ({ viewBox }) => {
     const { cx, cy } = viewBox;
     return (

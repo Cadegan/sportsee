@@ -11,12 +11,17 @@ import { getUserPerformance } from "../../services/API";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
+/**
+ * This function returns a radar chart of the user's statistics.
+ **/
 function RadarStats() {
   const { id } = useParams();
   const [radarData, setRadarData] = useState([]);
 
   useEffect(() => {
-    /*  Data from API service */
+    /** This function is used to get the data and return data "subject" and their values,
+     * and create a radar chart.
+     */
     getUserPerformance(id).then((items) => {
       const dataMapped = items.data.data.map((element) => ({
         subject: items.data.kind[element.kind],

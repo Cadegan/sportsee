@@ -6,6 +6,11 @@ import glucidesIcon from "../../assets/glucides-icon.svg";
 import lipidesIcon from "../../assets/lipides-icon.svg";
 import caloriesFormat from "../CaloriesFormat/caloriesFormat";
 
+/**
+ * @returns A section with 4 divs inside
+ * including informations on the user's calories, proteins, carbohydrates and lipids.
+ */
+
 function sideInformations({
   calorieCount,
   proteinCount,

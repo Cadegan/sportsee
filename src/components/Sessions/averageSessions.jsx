@@ -39,6 +39,11 @@ function AverageSessions() {
     return week[+num - 1];
   }
 
+  /**
+   * Displays where the cursor is located.
+   * @returns A rectangle with a fill of black, fill opacity of 0.1, x and y coordinates of the first
+   * point in the points array, and a width and height of 400.
+   */
   const CustomCursor = (props) => {
     const { points } = props;
     const { x, y } = points[0];
@@ -54,6 +59,10 @@ function AverageSessions() {
     );
   };
 
+  /**
+   * Legend of average session length
+   * @returns A function that returns a div
+   */
   const lengendText = () => {
     return (
       <div
@@ -72,6 +81,11 @@ function AverageSessions() {
     );
   };
 
+  /**
+   * Displays where the cursor is located.
+   * @returns A circle with a radius of 6, a stroke of rgb(255, 255, 255, 0.2), a stroke width of 15, and
+   * a fill of white.
+   */
   const CustomizedDot = (props) => {
     const { cx, cy } = props;
 

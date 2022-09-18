@@ -1,5 +1,9 @@
 import React from "react";
 
+/**
+ * The function WelCome displays a sentence with the name of the user.
+ * @returns A React component
+ */
 function WelCome({ firstName }) {
   return (
     <section className="welComeMessage">

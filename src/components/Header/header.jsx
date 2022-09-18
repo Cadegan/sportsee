@@ -6,6 +6,10 @@ import logoFitness from "../../assets/fitness.svg";
 import logoSwimming from "../../assets/swimming.svg";
 import logoYoga from "../../assets/yoga.svg";
 
+/**
+ * A function that returns the NavBar component
+ * and allows to navigate between different pages
+ */
 function NavBar() {
   let activeStyle = {
     textDecoration: "underline",
