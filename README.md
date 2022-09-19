@@ -2,7 +2,7 @@
 
 SportSee is an application designed to manage and coach physical activity.
 
-## Technologies
+## 1. Technologies
 - Javascript
 - SASS
 - React
@@ -10,20 +10,51 @@ SportSee is an application designed to manage and coach physical activity.
 - AXIOS
 - PropTypes
 
-## Author
-Jean-Charles Maurice
-Version : 1.0
+## 2. Author
+- [Jean-Charles Maurice](https://github.com/Cadegan/)
+- Version : 1.0
 
-## Installing and launching Back-End
+## 3. Project
+
+### 3.1 Prerequisites
+
+- [NodeJS (**version 16.17.0**)](https://nodejs.org/en/)
+- [Yarn](https://yarnpkg.com/)
+
+If you are working with several versions of NodeJS, we recommend you install [nvm](https://github.com/nvm-sh/nvm). This tool will allow you to easily manage your NodeJS versions.
+
+### 3.2 Installing and launching Back-End
 - Fork the repository of SportSee back-end:
-` git clone https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard.git `
+[` git clone https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard.git `](https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard.git)
 - Clone it on your computer.
 - The `yarn` command will allow you to install the dependencies.
-- The `yarn dev` 
+- The `yarn dev` or `yarn start` command will allow you to run the micro API.
 
-## Installing and launching Front-End
-- Fork the repository of SportSee front-end:
+### 3.3 Installing and launching Front-End
+- Fork the repository of SportSee Front-end:
+[`git clone  https://github.com/Cadegan/sportsee.git`](https://github.com/Cadegan/sportsee.git)
+- Clone it on your computer.
+- The `npm install` command will allow you to install the dependencies.
+- The `npm start` or `yarn start` commands will allow you to run the app.
+- During the launch, the console will indicate that port 3000 is already in use. Confirm by `pressing "y"` that you want to launch the application on another port instead.
+```bash
+Front-end is now rendered at URL http://localhost:3001
+SportSee API only contains data for users with id 12 and 18
+```
 
+## 4. Endpoints
+
+### 4.1 Possible endpoints
+
+- `http://localhost:3001/` - Displays the choice between user 12 or 18
+- `http://localhost:3001/user/${userId}` - Displays information from a user. This endpoint includes the user information (first name, last name and age), the current day's score chart, key data (calorie, macronutrient, etc.), activity's chart, average sessions's chart and performance's chart.
+
+**Warning, currently only two users have been mocked. They have userId 12 and 18 respectively.**
+
+### 4.2 Examples of queries
+
+- `http://localhost:3000/user/12/performance` - Retrieves the performance of the user with id 12
+- `http://localhost:3000/user/18` - Retrieves user 18's main information.
 
 ////////////////////////////////
 
@@ -97,3 +128,89 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+
+
+
+
+FORMAT: 1A
+HOST: https://polls.apiblueprint.org/
+
+# test
+
+Polls is a simple API allowing consumers to view polls and vote in them.
+
+## Questions Collection [/questions]
+
+### List All Questions [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "question": "Favourite programming language?",
+                "published_at": "2015-08-05T08:40:51.620Z",
+                "choices": [
+                    {
+                        "choice": "Swift",
+                        "votes": 2048
+                    }, {
+                        "choice": "Python",
+                        "votes": 1024
+                    }, {
+                        "choice": "Objective-C",
+                        "votes": 512
+                    }, {
+                        "choice": "Ruby",
+                        "votes": 256
+                    }
+                ]
+            }
+        ]
+
+### Create a New Question [POST]
+
+You may create your own question using this action. It takes a JSON
+object containing a question and a collection of answers in the
+form of choices.
+
++ Request (application/json)
+
+        {
+            "question": "Favourite programming language?",
+            "choices": [
+                "Swift",
+                "Python",
+                "Objective-C",
+                "Ruby"
+            ]
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /questions/2
+
+    + Body
+
+            {
+                "question": "Favourite programming language?",
+                "published_at": "2015-08-05T08:40:51.620Z",
+                "choices": [
+                    {
+                        "choice": "Swift",
+                        "votes": 0
+                    }, {
+                        "choice": "Python",
+                        "votes": 0
+                    }, {
+                        "choice": "Objective-C",
+                        "votes": 0
+                    }, {
+                        "choice": "Ruby",
+                        "votes": 0
+                    }
+                ]
+            }
