@@ -1,3 +1,32 @@
+# Sportsee - Sports coaching app
+
+SportSee is an application designed to manage and coach physical activity.
+
+## Technologies
+- Javascript
+- SASS
+- React
+- Recharts
+- AXIOS
+- PropTypes
+
+## Author
+Jean-Charles Maurice
+Version : 1.0
+
+## Installing and launching Back-End
+- Fork the repository of SportSee back-end:
+` git clone https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard.git `
+- Clone it on your computer.
+- The `yarn` command will allow you to install the dependencies.
+- The `yarn dev` 
+
+## Installing and launching Front-End
+- Fork the repository of StuffSee front-end:
+
+
+////////////////////////////////
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
