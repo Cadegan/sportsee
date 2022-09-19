@@ -22,7 +22,7 @@ Version : 1.0
 - The `yarn dev` 
 
 ## Installing and launching Front-End
-- Fork the repository of StuffSee front-end:
+- Fork the repository of SportSee front-end:
 
 
 ////////////////////////////////
