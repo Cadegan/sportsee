@@ -4,7 +4,7 @@
 
 
 # Sportsee - Sports coaching app
-![SportSeeLogo](../sportsee/src/assets/logo.svg)
+![SportSeeLogo](./src/assets/logo.svg)
 
 SportSee is an application designed to manage and coach physical activity.
 
@@ -59,5 +59,4 @@ SportSee API only contains data for users with id 12 and 18
 
 ### 4.2 Examples of queries
 
-- `http://localhost:3000/user/12/performance` - Retrieves the performance of the user with id 12
-- `http://localhost:3000/user/18` - Retrieves user 18's main information.
+- `http://localhost:3001/user/12` - Retrieves user 12's main information.
