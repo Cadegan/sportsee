@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 /**
  * The function WelCome displays a sentence with the name of the user.
@@ -23,3 +24,7 @@ function WelCome({ firstName }) {
 }
 
 export default WelCome;
+
+WelCome.propTypes = {
+  firstName: PropTypes.string.isRequired,
+};

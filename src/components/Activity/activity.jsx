@@ -59,6 +59,7 @@ function Activities() {
 
   /**
    * It takes a value, which is a date, and returns the day of the month
+   * @param  {date} value
    * @returns The day of the month.
    */
   function dayFormatter(value) {

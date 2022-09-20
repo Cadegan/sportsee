@@ -36,7 +36,8 @@ function AverageSessions() {
   }, [id]);
 
   /**
-   * It takes a number as an argument and returns the corresponding day of the week
+   * Takes a number as an argument
+   * @param  {number} num
    * @returns The day of the week.
    */
   function dayFormatter(num) {
@@ -47,7 +48,7 @@ function AverageSessions() {
   /**
    * Displays where the cursor is located.
    * @returns A rectangle with a fill of black, fill opacity of 0.1, x and y coordinates of the first
-   * point in the points array, and a width and height of 400.
+   * point in the points array.
    */
   const CustomCursor = (props) => {
     const { points } = props;
