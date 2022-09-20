@@ -56,20 +56,24 @@ function NavBar() {
       <nav className="nav-l">
         <div className="nav-l-group">
           <NavLink className="bt-yoga nav-l-bt" to="/">
-            <img src={logoYoga} alt="Logo Kasa" className="logoHeader"></img>
+            <img src={logoYoga} alt="Logo yoga" className="logoHeader"></img>
           </NavLink>
           <NavLink className="bt-swimming nav-l-bt" to="/">
             <img
               src={logoSwimming}
-              alt="Logo Kasa"
+              alt="Logo swimming"
               className="logoHeader"
             ></img>
           </NavLink>
           <NavLink className="bt-cycle nav-l-bt" to="/">
-            <img src={logoCycle} alt="Logo Kasa" className="logoHeader"></img>
+            <img src={logoCycle} alt="Logo cyle" className="logoHeader"></img>
           </NavLink>
           <NavLink className="bt-fitness nav-l-bt" to="/">
-            <img src={logoFitness} alt="Logo Kasa" className="logoHeader"></img>
+            <img
+              src={logoFitness}
+              alt="Logo firness"
+              className="logoHeader"
+            ></img>
           </NavLink>
         </div>
         <div className="copiryght">

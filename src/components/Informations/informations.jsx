@@ -1,89 +1,34 @@
 import React from "react";
 import PropTypes from "prop-types";
-import caloriesIcon from "../../assets/calories-icon.svg";
-import proteinesIcon from "../../assets/protein-icon.svg";
-import glucidesIcon from "../../assets/glucides-icon.svg";
-import lipidesIcon from "../../assets/lipides-icon.svg";
-import caloriesFormat from "../CaloriesFormat/caloriesFormat";
 
 /**
- * @returns A section with 4 divs inside
- * including informations on the user's calories, proteins, carbohydrates and lipids.
+ * Formats the global information
+ * @returns A div with a picto image, title and unit.
  */
+function keyDataElement(props) {
+  const { secondaryClassName, picto, alt, label, value, unit } = props;
 
-function sideInformations({
-  calorieCount,
-  proteinCount,
-  carbohydrateCount,
-  lipidCount,
-}) {
   return (
-    <section className="sideInformations">
-      <div className="caloriesCount sideInformationsContainer">
-        <div className="logoInformationCount">
-          <img
-            src={caloriesIcon}
-            alt="Logo calorie"
-            className="caloriesIcon"
-            aria-label="fire"
-          ></img>
-        </div>
-        <div className="textInformationCount">
-          <span>{caloriesFormat(calorieCount) + `kCal`}</span>
-          <p>Calories</p>
-        </div>
+    <div className={`sideInformationsContainer`}>
+      <div className={`logoInformationCount ${secondaryClassName}`}>
+        <img src={picto} alt={alt} aria-label={label}></img>
       </div>
-      <div className="proteinsCount sideInformationsContainer">
-        <div className="logoInformationCount">
-          <img
-            src={proteinesIcon}
-            alt="Logo protein"
-            className="proteinesIcon"
-            aria-label="meat"
-          ></img>
-        </div>
-        <div className="textInformationCount">
-          <span>{proteinCount + `g`}</span>
-          <p>Proteines</p>
-        </div>
+      <div className="textInformationCount">
+        <span>
+          {value}
+          {unit}
+        </span>
+        <p>{label}</p>
       </div>
-      <div className="glucidesCount sideInformationsContainer">
-        <div className="logoInformationCount">
-          <img
-            src={glucidesIcon}
-            alt="Logo glucide"
-            className="glucidesIcon"
-            aria-label="apple"
-          ></img>
-        </div>
-        <div className="textInformationCount">
-          <span>{carbohydrateCount + `g`}</span>
-          <p>Glucides</p>
-        </div>
-      </div>
-      <div className="lipidCount sideInformationsContainer">
-        <div className="logoInformationCount">
-          <img
-            src={lipidesIcon}
-            alt="Logo lipide"
-            className="lipidesIcon"
-            aria-label="hamburger"
-          ></img>
-        </div>
-        <div className="textInformationCount">
-          <span>{lipidCount + `g`}</span>
-          <p>Lipides</p>
-        </div>
-      </div>
-    </section>
+    </div>
   );
 }
 
-sideInformations.propTypes = {
-  calorieCount: PropTypes.number,
-  proteinCount: PropTypes.number,
-  carbohydrateCount: PropTypes.number,
-  lipidCount: PropTypes.number,
-};
+export default keyDataElement;
 
-export default sideInformations;
+keyDataElement.propTypes = {
+  picto: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  // value: PropTypes.number.isRequired,
+  unit: PropTypes.string.isRequired,
+};

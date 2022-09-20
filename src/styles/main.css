@@ -134,19 +134,19 @@ a {
   height: 20px;
 }
 
-.caloriesCount div:nth-child(1) {
+.calorieCount {
   background-color: rgba(255, 0, 0, 0.1);
 }
 
-.proteinsCount div:nth-child(1) {
+.proteinCount {
   background-color: rgba(74, 184, 255, 0.1);
 }
 
-.glucidesCount div:nth-child(1) {
+.carbohydrateCount {
   background-color: rgba(253, 204, 12, 0.1);
 }
 
-.lipidCount div:nth-child(1) {
+.lipidCount {
   background-color: rgba(253, 81, 129, 0.1);
 }
 
