@@ -152,8 +152,7 @@ a {
 
 /* Score */
 .scoreContainer {
-  width: 30%;
-  height: 270px;
+  height: 250px;
   border-radius: 5px;
   background-color: #FBFBFB;
 }
@@ -174,16 +173,14 @@ a {
 /* Radar */
 .radarContainer {
   background-color: #282D30;
-  width: 30%;
-  height: 270px;
+  height: 250px;
   border-radius: 5px;
 }
 
 /* Average sessions*/
 .AverageSessionsContainer {
   background-color: #FF0000;
-  width: 30%;
-  height: 270px;
+  height: 250px;
   border-radius: 5px;
 }
 
@@ -191,7 +188,7 @@ a {
 .activityContainer {
   background-color: #FBFBFB;
   border-radius: 5px;
-  padding: 24px 32px 24px 32px;
+  padding: 10px 10px 0px 32px;
   margin-bottom: 30px;
 }
 
@@ -251,8 +248,8 @@ a {
 
 .dashBoard {
   position: absolute;
-  left: 224px;
-  top: 138px;
+  left: 180px;
+  top: 110px;
   width: 80%;
 }
 
@@ -268,8 +265,10 @@ a {
 }
 
 .charts {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-top: 15px;
 }
 
 /*Error page*/

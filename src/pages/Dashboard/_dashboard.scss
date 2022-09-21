@@ -8,8 +8,8 @@
 
 .dashBoard {
     position: absolute;
-    left: 224px;
-    top: 138px;
+    left: 180px;
+    top: 110px;
     width: 80%;
 }
 
@@ -25,6 +25,11 @@
 }
 
 .charts {
-    display: flex;
-    justify-content: space-between;
+    //     display: flex;
+    // justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 15px;
+
 }
