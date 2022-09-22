@@ -9,7 +9,7 @@ export function useAxios(endpoint) {
   const [error, setError] = useState(false);
 
   const { id } = useParams();
-  const isMockedData = true;
+  const isMockedData = false;
 
   useEffect(() => {
     if (!endpoint) {
