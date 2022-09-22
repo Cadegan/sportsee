@@ -1,5 +1,5 @@
 {
-  "userMainData": [
+  "data": [
     {
       "id": 12,
       "userInfos": {
@@ -32,7 +32,7 @@
     }
   ],
 
-  "userActivity": [
+  "activity": [
     {
       "userId": 12,
       "sessions": [
@@ -115,7 +115,7 @@
     }
   ],
 
-  "userAverageSessions": [
+  "average-sessions": [
     {
       "userId": 12,
       "sessions": [
@@ -184,7 +184,7 @@
     }
   ],
 
-  "userPerformance": [
+  "performance": [
     {
       "userId": 12,
       "kind": {

@@ -1,5 +1,6 @@
 import mockedData from "../data/mockedData.json";
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 
 export function useAxios(endpoint) {
@@ -7,8 +8,9 @@ export function useAxios(endpoint) {
   const [isLoading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
-  const userId = 12;
-  const isMockedData = true;
+  const { id } = useParams();
+  // const userId = id;
+  const isMockedData = false;
 
   useEffect(() => {
     if (!endpoint) {
@@ -39,7 +41,7 @@ export function useAxios(endpoint) {
     async function fetchData(endpoint) {
       try {
         const response = await axios.get(
-          `http://localhost:3000/user/${userId}${endpoint}`
+          `http://localhost:3000/user/${id}${endpoint}`
         );
         const data = await response.data;
         setData(data.data);
