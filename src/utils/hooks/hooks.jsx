@@ -9,8 +9,7 @@ export function useAxios(endpoint) {
   const [error, setError] = useState(false);
 
   const { id } = useParams();
-  // const userId = id;
-  const isMockedData = false;
+  const isMockedData = true;
 
   useEffect(() => {
     if (!endpoint) {
@@ -21,16 +20,16 @@ export function useAxios(endpoint) {
       const data = mockedData;
       switch (endpoint) {
         case "/":
-          setData(data.userMainData);
+          setData(data["data"]);
           break;
         case "/activity":
-          setData(data["userActivity"]);
+          setData(data["activity"]);
           break;
         case "/average-sessions":
-          setData(data["userAverageSessions"]);
+          setData(data["average-sessions"]);
           break;
         case "/performance":
-          setData(data["userPerformance"]);
+          setData(data["performance"]);
           break;
         default:
           setError(true);
