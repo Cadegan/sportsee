@@ -25,7 +25,7 @@ export function useAxios(endpoint) {
     const getMockedData = async (endpoint) => {
       let data = [];
       switch (endpoint) {
-        case `/`:
+        case "/":
           data = await getUserInfos(id);
           break;
         case "/activity":
@@ -39,9 +39,10 @@ export function useAxios(endpoint) {
           break;
         default:
           setError(true);
-          setData(data);
+          // setData({});
+          setLoading(true);
       }
-      setLoading(false);
+      return data;
     };
 
     async function fetchData(endpoint) {
