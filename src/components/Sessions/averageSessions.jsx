@@ -1,6 +1,7 @@
 import React from "react";
 import ModuleError from "../Error/moduleError";
-// import Loader from "../../components/Loader/loader";
+
+//Recharts's LineChart
 import {
   LineChart,
   Line,
@@ -12,18 +13,13 @@ import {
   Legend,
 } from "recharts";
 
-// import { getUserAverageSessions } from "../../services/API";
 import { useAxios } from "../../utils/hooks/hooks";
-// import { useEffect, useState } from "react";
-// import { useParams } from "react-router-dom";
-// const { id } = useParams();
-// const [sessionsData, setSessionsData] = useState([]);
-// const [isLoading, setLoading] = useState(true);
 
 /**
- * Takes a number as an argument
+ * @function dayFormatter
+ * @description Takes a number as argument and returns it as day of the week
  * @param  {number} num
- * @returns The day of the week.
+ * @returns a new array.
  */
 function dayFormatter(num) {
   const week = ["L", "M", "M", "J", "V", "S", "D"];
@@ -31,9 +27,10 @@ function dayFormatter(num) {
 }
 
 /**
- * Displays where the cursor is located.
- * @returns A rectangle with a fill of black, fill opacity of 0.1, x and y coordinates of the first
+ * @function CustomCursor
+ * @description Displays where the cursor is located. A rectangle with a fill of black, fill opacity of 0.1, x and y coordinates of the first
  * point in the points array.
+ * @returns { HTMLElement }
  */
 const CustomCursor = (props) => {
   const { points } = props;
@@ -51,8 +48,9 @@ const CustomCursor = (props) => {
 };
 
 /**
- * Legend of average session length
- * @returns A function that returns a div
+ * @function lengendText
+ * @description Legend of average session length
+ * @returns { HTMLElement }
  */
 const lengendText = () => {
   return (
@@ -73,9 +71,9 @@ const lengendText = () => {
 };
 
 /**
- * Displays where the cursor is located.
- * @returns A circle with a radius of 6, a stroke of rgb(255, 255, 255, 0.2), a stroke width of 15, and
- * a fill of white.
+ * @function CustomizedDot
+ * @description Displays where the cursor is located.
+ * @returns { HTMLElement }
  */
 const CustomizedDot = (props) => {
   const { cx, cy } = props;
@@ -92,23 +90,16 @@ const CustomizedDot = (props) => {
   );
 };
 
+/**
+ * @function AverageSessions
+ * @description This function returns a ligne graph that shows sessions in the week by time spent
+ * @param { Array.<Objects> } data
+ * @param { Boolean } isLoading - True or not in charging state
+ * @param  { Boolean } error - Error or not in charging state
+ * @returns { HTMLElement }
+ **/
 function AverageSessions() {
   const { data, isLoading, error } = useAxios("/average-sessions");
-  // console.log(data);
-
-  // useEffect(() => {
-  //   /*  Data from API service */
-  //   setLoading(true);
-  //   getUserAverageSessions(id).then((data) => {
-  //     const formattedData = data.data.sessions.map((items) => ({
-  //       day: items.day,
-  //       activity: items.sessionLength,
-  //     }));
-  //     setLoading(false);
-  //     setSessionsData(formattedData);
-  //     // console.log(formattedData);
-  //   });
-  // }, [id]);
 
   if (!isLoading && !error) {
     const sessions = data.sessions; // const {sessions} = data

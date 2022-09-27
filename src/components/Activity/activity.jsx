@@ -1,7 +1,7 @@
 import React from "react";
 import ModuleError from "../Error/moduleError";
-// import Loader from "../../components/Loader/loader";
 
+//Recharts's barChart
 import {
   BarChart,
   Bar,
@@ -13,43 +13,27 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-// import { getUserActivity } from "../../services/API";
-// import { useEffect, useState } from "react";
-// import { useParams } from "react-router-dom";
 import { useAxios } from "../../utils/hooks/hooks";
 
 /**
- * This function returns the content of the user's activities.
+ * @function Activities
+ * @description This function returns the content of the user's activities.
+ * @param { Array.<Objects> } data
+ * @param { Boolean } isLoading - True or not in charging state
+ * @param  { Boolean } error - Error or not in charging state
+ * @returns { HTMLElement }
  **/
 function Activities() {
   const { data, isLoading, error } = useAxios("/activity");
-  // const sessions = data.sessions;
-  const { sessions } = data;
-  // console.log(data);
-  // const { id } = useParams();
-  // const [sessionsData, setSessionsData] = useState([]);
-  // const [isLoading, setLoading] = useState(true);
 
-  /* A function that is called when the component is mounted.
-   * It is used to get the data from the API and return data "day", "weight" and "calories"
-   */
-  // useEffect(() => {
-  //   setLoading(true);
-  //   getUserActivity(id).then((data) => {
-  //     const activityData = data.data.sessions.map((items) => ({
-  //       day: items.day,
-  //       weight: items.kilogram,
-  //       calories: items.calories,
-  //     }));
-  //     setSessionsData(activityData);
-  //     setLoading(false);
-  //     console.log(activityData);
-  //   });
-  // }, [id]);
+  const { sessions } = data;
 
   /**
-   * If the tooltip is active and there is data to display, display the weight and calories burned
-   * @returns A custom tooltip for the chart.
+   * @function CustomTooltip
+   * @description A custom tooltip for the chart. If the tooltip is active and there is data to display, display the weight and calories burned
+   * @param  { Boolean } active - True or not
+   * @param  { Object } playload - Data
+   * @returns { HTMLElement }
    */
   const CustomTooltip = ({ active, payload }) => {
     if (active && payload) {
@@ -64,8 +48,9 @@ function Activities() {
   };
 
   /**
-   * It takes a value, which is a date, and returns the day of the month
-   * @param  {date} value
+   * @function dayFormatter
+   * @param  { date } value
+   * @description It takes a value, which is a date, and returns the day of the month
    * @returns The day of the month.
    */
   function dayFormatter(value) {

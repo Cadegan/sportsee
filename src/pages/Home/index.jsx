@@ -1,6 +1,11 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
+/**
+ * @function Home
+ * @description Allows to choose between two users
+ * @returns { HTMLElement }
+ */
 function Home() {
   return (
     <div className="containerUsers">

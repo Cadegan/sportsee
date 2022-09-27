@@ -1,15 +1,18 @@
 import React from "react";
 import ModuleError from "../Error/moduleError";
+
+//Recharts's PieChart
 import { PieChart, Pie, Cell, Label, ResponsiveContainer } from "recharts";
 
 /**
- * If todayScore is undefined, then set scoreStored to score, otherwise set scoreStored to todayScore
- * @returns The scoreStored variable is being returned.
- */
+ * @function Score
+ * @description This function returns a score chart of the user's statistics. If todayScore is undefined, then set scoreStored to score, otherwise set scoreStored to todayScore.
+ * @param { Array } scoreData
+ * @returns { HTMLElement }
+ **/
 const Score = ({ scoreData }) => {
   const formatScore = (todayScore, score) => {
     let scoreStored;
-
     todayScore === undefined
       ? (scoreStored = score)
       : (scoreStored = todayScore);

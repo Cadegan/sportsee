@@ -1,8 +1,8 @@
 import React from "react";
 import ModuleError from "../Error/moduleError";
-// import ModuleError from "../Error/moduleError";
-// import Loader from "../../components/Loader/loader";
 import { useAxios } from "../../utils/hooks/hooks";
+
+//Recharts's RadarChart
 import {
   Radar,
   RadarChart,
@@ -11,35 +11,23 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-// import { getUserPerformance } from "../../services/API";
-// import { useEffect, useState } from "react";
-// import { useParams } from "react-router-dom";
-
 /**
- * This function returns a radar chart of the user's statistics.
+ * @function RadarStats
+ * @description This function returns a radar chart of the user's statistics.
+ * @param { Array.<Objects> } data
+ * @param { Boolean } isLoading - True or not in charging state
+ * @param  { Boolean } error - Error or not in charging state
+ * @returns { HTMLElement }
  **/
 function RadarStats() {
   const { data, isLoading, error } = useAxios("/performance");
-  // const { id } = useParams();
-  // const [radarData, setRadarData] = useState([]);
-  // const [isLoading, setLoading] = useState(true);
 
-  // useEffect(() => {
-  //   /** This function is used to get the data and return data "subject" and their values,
-  //    * and create a radar chart.
-  //    */
-  //   setLoading(true);
-  //   getUserPerformance(id).then((items) => {
-  //     const dataMapped = items.data.data.map((element) => ({
-  //       subject: items.data.kind[element.kind],
-  //       subjectValue: element.value,
-  //     }));
-  //     setLoading(false);
-  //     setRadarData(dataMapped);
-  //     // console.log(dataMapped);
-  //   });
-  // }, [id]);
-
+  /**
+   * @function xAxisFormatter
+   * @description A component that provides a RadarChart of the User's Performance.
+   * @param { string } kind -  Expression to be evaluated
+   * @returns { object}
+   */
   const xAxisFormatter = (kind) => {
     switch (kind) {
       case 1:
