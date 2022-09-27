@@ -1,4 +1,6 @@
 import React from "react";
+import Error from "../Error/error";
+// import ModuleError from "../../components/Error/moduleError";
 // import { useEffect, useState } from "react";
 // import { useParams } from "react-router-dom";
 // import mainData from "../../services/mockServices";
@@ -99,6 +101,8 @@ function DashBoard() {
         </div>
       </div>
     );
+  } else if (error) {
+    return <Error />;
   }
 }
 

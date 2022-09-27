@@ -1,4 +1,5 @@
 import React from "react";
+import ModuleError from "../Error/moduleError";
 // import ModuleError from "../Error/moduleError";
 // import Loader from "../../components/Loader/loader";
 import { useAxios } from "../../utils/hooks/hooks";
@@ -76,6 +77,8 @@ function RadarStats() {
         </ResponsiveContainer>
       </div>
     );
+  } else if (error) {
+    return <ModuleError />;
   }
 }
 

@@ -1,4 +1,10 @@
-import mockedData from "../data/mockedData.json";
+// import mockedData from "../data/mockedData.json";
+import {
+  getUserInfos,
+  getUserActivity,
+  getUserAverageSessions,
+  getUserPerformance,
+} from "../data/dataMocked";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
@@ -16,26 +22,27 @@ export function useAxios(endpoint) {
       return setLoading(true);
     }
 
-    function getMockedData(endpoint) {
-      const data = mockedData;
+    const getMockedData = async (endpoint) => {
+      let data = [];
       switch (endpoint) {
-        case "/":
-          setData(data["data"]);
+        case `/`:
+          data = await getUserInfos(id);
           break;
         case "/activity":
-          setData(data["activity"]);
+          data = await getUserActivity(id);
           break;
         case "/average-sessions":
-          setData(data["average-sessions"]);
+          data = await getUserAverageSessions(id);
           break;
         case "/performance":
-          setData(data["performance"]);
+          data = await getUserPerformance(id);
           break;
         default:
           setError(true);
-          setData({});
+          setData(data);
       }
-    }
+      setLoading(false);
+    };
 
     async function fetchData(endpoint) {
       try {

@@ -276,7 +276,7 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 100px 0px 0px 10vh;
+  margin: 100px 0px 0px 13vh;
   text-align: center;
 }
 .errorMessage * {

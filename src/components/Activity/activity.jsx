@@ -1,6 +1,7 @@
 import React from "react";
+import ModuleError from "../Error/moduleError";
 // import Loader from "../../components/Loader/loader";
-// import ModuleError from "../Error/moduleError";
+
 import {
   BarChart,
   Bar,
@@ -127,6 +128,8 @@ function Activities() {
         </ResponsiveContainer>
       </div>
     );
+  } else if (error) {
+    return <ModuleError />;
   }
 }
 
