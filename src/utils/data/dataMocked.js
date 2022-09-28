@@ -262,11 +262,16 @@ export const USER_PERFORMANCE = [
 
 export const getUserInfos = async (id) => {
   try {
+    console.log(USER_MAIN_DATA);
     const res = USER_MAIN_DATA.find((el) => el.userId === id);
     return { data: res };
   } catch (e) {
     console.log(e);
   }
+};
+
+export const getUserById = (id) => {
+  USER_MAIN_DATA.find((elt) => elt.id === id);
 };
 
 export const getUserActivity = async (id) => {
