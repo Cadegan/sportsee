@@ -8,9 +8,9 @@ import PropTypes from "prop-types";
 
 /**
  * @function keyDataElement
- * @description to render the KEY_PERFORMANCE_INDICATOR
- * @param { object } props - the props of the keyDataElement
- * @param { string } secondaryClassName
+ * @description To render the KEY_PERFORMANCE_INDICATOR
+ * @param { object } props - The props of the keyDataElement
+ * @param { string } secondaryClassName - Secondary class name for custom display
  * @param { String } picto - Image's picto
  * @param { String } alt - Image's description
  * @param { String } label - Image's label

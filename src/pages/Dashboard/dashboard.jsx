@@ -17,7 +17,7 @@ import caloriesFormat from "../../components/CaloriesFormat/caloriesFormat";
 /**
  * @function DashBoard
  * @description This function returns the Dashboard with the main user's information
- * @param { Array.<Objects> } data
+ * @param { Array.<Objects> } data - User's Main data information
  * @param { Boolean } isLoading - True or not in charging state
  * @param  { Boolean } error - Error or not in charging state
  * @returns { HTMLElement }

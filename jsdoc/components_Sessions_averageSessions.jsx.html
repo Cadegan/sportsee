@@ -1,4 +1,32 @@
-import React from "react";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/Sessions/averageSessions.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/Sessions/averageSessions.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from "react";
 import ModuleError from "../Error/moduleError";
 
 //Recharts's LineChart
@@ -36,7 +64,7 @@ const CustomCursor = (props) => {
   const { points } = props;
   const { x, y } = points[0];
   return (
-    <Rectangle
+    &lt;Rectangle
       fill="black"
       fillOpacity={0.1}
       x={x}
@@ -54,7 +82,7 @@ const CustomCursor = (props) => {
  */
 const lengendText = () => {
   return (
-    <div
+    &lt;div
       style={{
         color: "white",
         marginTop: "20px",
@@ -64,9 +92,9 @@ const lengendText = () => {
       }}
     >
       Durée moyenne des
-      <br />
+      &lt;br />
       sessions
-    </div>
+    &lt;/div>
   );
 };
 
@@ -79,7 +107,7 @@ const CustomizedDot = (props) => {
   const { cx, cy } = props;
 
   return (
-    <circle
+    &lt;circle
       cx={cx}
       cy={cy}
       r={6}
@@ -93,7 +121,7 @@ const CustomizedDot = (props) => {
 /**
  * @function AverageSessions
  * @description This function returns a ligne graph that shows sessions in the week by time spent
- * @param { Array.<Objects> } data - Session's data
+ * @param { Array.&lt;Objects> } data - Session's data
  * @param { Boolean } isLoading - True or not in charging state
  * @param  { Boolean } error - Error or not in charging state
  * @returns { HTMLElement }
@@ -101,12 +129,12 @@ const CustomizedDot = (props) => {
 function AverageSessions() {
   const { data, isLoading, error } = useAxios("/average-sessions");
 
-  if (!isLoading && !error) {
+  if (!isLoading &amp;&amp; !error) {
     const sessions = data.sessions; // const {sessions} = data
     return (
-      <div className="AverageSessionsContainer">
-        <ResponsiveContainer width="99%">
-          <LineChart
+      &lt;div className="AverageSessionsContainer">
+        &lt;ResponsiveContainer width="99%">
+          &lt;LineChart
             data={sessions}
             margin={{
               top: 5,
@@ -115,7 +143,7 @@ function AverageSessions() {
               bottom: 5,
             }}
           >
-            <XAxis
+            &lt;XAxis
               dataKey="day"
               tickFormatter={dayFormatter}
               axisLine={false}
@@ -123,14 +151,14 @@ function AverageSessions() {
               stroke="white"
               opacity={0.5}
             />
-            <YAxis
+            &lt;YAxis
               axisLine={false}
               tickLine={false}
               allowDataOverflow={true}
               hide={true}
             />
-            <Tooltip
-              cursor={<CustomCursor />}
+            &lt;Tooltip
+              cursor={&lt;CustomCursor />}
               animationEasing="ease-out"
               labelFormatter={() => ``}
               formatter={(value) => [value + " min"]}
@@ -141,26 +169,49 @@ function AverageSessions() {
                 padding: 12,
               }}
             />
-            <Line
+            &lt;Line
               dataKey="sessionLength"
               type="natural"
               stroke="#FFFFFF"
               strokeWidth={2}
-              activeDot={<CustomizedDot />}
+              activeDot={&lt;CustomizedDot />}
               dot={false}
             />
-            <Legend
+            &lt;Legend
               verticalAlign="top"
               align="left"
               content={lengendText}
-            ></Legend>
-          </LineChart>
-        </ResponsiveContainer>
-      </div>
+            >&lt;/Legend>
+          &lt;/LineChart>
+        &lt;/ResponsiveContainer>
+      &lt;/div>
     );
   } else if (error) {
-    return <ModuleError />;
+    return &lt;ModuleError />;
   }
 }
 
 export default AverageSessions;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#Activities">Activities</a></li><li><a href="global.html#AverageSessions">AverageSessions</a></li><li><a href="global.html#CustomCursor">CustomCursor</a></li><li><a href="global.html#CustomizedDot">CustomizedDot</a></li><li><a href="global.html#CustomTooltip">CustomTooltip</a></li><li><a href="global.html#DashBoard">DashBoard</a></li><li><a href="global.html#dayFormatter">dayFormatter</a></li><li><a href="global.html#Error">Error</a></li><li><a href="global.html#Home">Home</a></li><li><a href="global.html#keyDataElement">keyDataElement</a></li><li><a href="global.html#lengendText">lengendText</a></li><li><a href="global.html#moduleError">moduleError</a></li><li><a href="global.html#NavBar">NavBar</a></li><li><a href="global.html#numberFormat">numberFormat</a></li><li><a href="global.html#RadarStats">RadarStats</a></li><li><a href="global.html#Score">Score</a></li><li><a href="global.html#scoreShow">scoreShow</a></li><li><a href="global.html#WelCome">WelCome</a></li><li><a href="global.html#xAxisFormatter">xAxisFormatter</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Wed Sep 28 2022 07:49:42 GMT+0200 (heure d’été d’Europe centrale)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

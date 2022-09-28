@@ -14,7 +14,7 @@ import {
 /**
  * @function RadarStats
  * @description This function returns a radar chart of the user's statistics.
- * @param { Array.<Objects> } data
+ * @param { Array.<Objects> } data - User's performance data information
  * @param { Boolean } isLoading - True or not in charging state
  * @param  { Boolean } error - Error or not in charging state
  * @returns { HTMLElement }

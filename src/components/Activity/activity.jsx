@@ -18,7 +18,7 @@ import { useAxios } from "../../utils/hooks/hooks";
 /**
  * @function Activities
  * @description This function returns the content of the user's activities.
- * @param { Array.<Objects> } data
+ * @param { Array.<Objects> } data - Activitie's data
  * @param { Boolean } isLoading - True or not in charging state
  * @param  { Boolean } error - Error or not in charging state
  * @returns { HTMLElement }
@@ -49,8 +49,8 @@ function Activities() {
 
   /**
    * @function dayFormatter
-   * @param  { date } value
    * @description It takes a value, which is a date, and returns the day of the month
+   * @param  { date } value - Date to be formatted
    * @returns The day of the month.
    */
   function dayFormatter(value) {
