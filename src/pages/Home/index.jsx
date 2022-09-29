@@ -9,13 +9,13 @@ import { NavLink } from "react-router-dom";
 function Home() {
   return (
     <div className="containerUsers">
-      <h1>Choisissez un utilisateur</h1>
       <div className="usersChoice">
+        <h1>Choisissez un utilisateur</h1>
         <NavLink to={`user/12`}>
-          <button>Karl (id:12)</button>
+          <div className="userButton karlButton">Karl (id:12)</div>
         </NavLink>
         <NavLink to={`user/18`}>
-          <button>Cecilia (id:18)</button>
+          <div className="userButton ceciliaButton">Cecilia (id:18)</div>
         </NavLink>
       </div>
     </div>

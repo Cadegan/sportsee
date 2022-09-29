@@ -9,50 +9,54 @@ export function useAxios(endpoint) {
   const [error, setError] = useState(false);
 
   const { id } = useParams();
-  const isMockedData = true;
+  const isMockedData = false;
 
-  useEffect(() => {
-    if (!endpoint) {
-      return setLoading(true);
-    }
-
-    const getMockedData = async (endpoint) => {
-      let data = mockedData;
-      switch (endpoint) {
-        case "/":
-          setData(data.data);
-          break;
-        case "/activity":
-          setData(data["activity"]);
-          break;
-        case "/average-sessions":
-          setData(data["average-sessions"]);
-          break;
-        case "/performance":
-          setData(data["performance"]);
-          break;
-        default:
-          setError(true);
-          setData({});
+  useEffect(
+    () => {
+      if (!endpoint) {
+        return setLoading(true);
       }
-      setLoading(false);
-    };
 
-    async function fetchData(endpoint) {
-      try {
-        const response = await axios.get(
-          `http://localhost:3000/user/${id}${endpoint}`
-        );
-        const data = await response.data;
-        setData(data.data);
-      } catch (err) {
-        console.log(err);
-        setError(true);
-      } finally {
+      const getMockedData = async (endpoint) => {
+        let data = mockedData;
+        switch (endpoint) {
+          case "/":
+            setData(data.data);
+            break;
+          case "/activity":
+            setData(data["activity"]);
+            break;
+          case "/average-sessions":
+            setData(data["average-sessions"]);
+            break;
+          case "/performance":
+            setData(data["performance"]);
+            break;
+          default:
+            setError(true);
+            setData({});
+        }
         setLoading(false);
+      };
+
+      async function fetchData(endpoint) {
+        try {
+          const response = await axios.get(
+            `http://localhost:3000/user/${id}${endpoint}`
+          );
+          const data = await response.data;
+          setData(data.data);
+        } catch (err) {
+          console.log(err);
+          setError(true);
+        } finally {
+          setLoading(false);
+        }
       }
-    }
-    isMockedData ? getMockedData(endpoint) : fetchData(endpoint);
-  }, [endpoint, isMockedData]);
+      isMockedData ? getMockedData(endpoint) : fetchData(endpoint);
+    },
+    [endpoint, isMockedData],
+    console.log("Data is mocked? :", isMockedData)
+  );
   return { data, isLoading, error };
 }
