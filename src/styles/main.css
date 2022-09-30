@@ -13,7 +13,6 @@ a {
 
 /* Header */
 .header {
-  width: 100vw;
   height: 91px;
   background-color: #020203;
   display: flex;
@@ -223,39 +222,79 @@ a {
   line-height: 24px;
 }
 
-.containerUsers {
+.usersContainer {
   display: flex;
-  max-width: 1440px;
+  max-width: 1280px;
   height: 80vh;
-  margin: auto;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
   margin-left: 117px;
+  justify-content: center;
 }
 
 .usersChoice {
   display: flex;
-  height: 100%;
-  width: 70%;
-  justify-content: space-around;
+  flex-direction: column;
+  height: 40vh;
+  width: 60%;
+  justify-content: space-evenly;
   align-items: center;
+}
+.usersChoice h1 {
+  text-align: center;
+}
+
+.buttonContainer {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
 }
 
 .userButton {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: white;
   width: 45%;
   min-width: 200px;
   height: 200px;
-  background-color: red;
+  background-color: #FF0101;
   border-radius: 10px;
   font-weight: 800;
   font-size: 25px;
+  transition: all 0.15s ease-out;
+}
+.userButton * {
+  color: white;
+  z-index: 1;
+}
+.userButton:hover {
+  background-size: auto 105%;
+  background: rgb(40, 45, 48);
+}
+.userButton::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0);
+  border-radius: 10px;
 }
 
+@media (max-width: 768px) {
+  .usersChoice {
+    height: 75vh;
+  }
+  .buttonContainer {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    height: 50vh;
+  }
+}
 /* Dashboard */
 .statSection {
   position: absolute;

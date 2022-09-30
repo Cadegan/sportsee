@@ -8,15 +8,21 @@ import { NavLink } from "react-router-dom";
  */
 function Home() {
   return (
-    <div className="containerUsers">
+    <div className="usersContainer">
       <div className="usersChoice">
         <h1>Choisissez un utilisateur</h1>
-        <NavLink to={`user/12`}>
-          <div className="userButton karlButton">Karl (id:12)</div>
-        </NavLink>
-        <NavLink to={`user/18`}>
-          <div className="userButton ceciliaButton">Cecilia (id:18)</div>
-        </NavLink>
+        <div className="buttonContainer">
+          <NavLink to={`user/12`}>
+            <div className="userButton karlButton">
+              <p>Karl (id:12)</p>
+            </div>
+          </NavLink>
+          <NavLink to={`user/18`}>
+            <div className="userButton ceciliaButton">
+              <p>Cecilia (id:18)</p>
+            </div>
+          </NavLink>
+        </div>
       </div>
     </div>
   );
