@@ -222,6 +222,7 @@ a {
   line-height: 24px;
 }
 
+/* Home page */
 .usersContainer {
   display: flex;
   max-width: 1280px;
@@ -265,6 +266,7 @@ a {
   transition: all 0.15s ease-out;
 }
 .userButton * {
+  text-align: center;
   color: white;
   z-index: 1;
 }
@@ -287,11 +289,15 @@ a {
   .usersChoice {
     height: 75vh;
   }
+  .userButton {
+    min-width: 150px;
+    height: 150px;
+  }
   .buttonContainer {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    justify-content: space-between;
+    justify-content: none;
     height: 50vh;
   }
 }
