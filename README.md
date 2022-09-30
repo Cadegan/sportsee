@@ -74,5 +74,5 @@ If you want to switch between mocked data or the API data, you need to set `true
 
 ### 5.2 Examples
 
-`const isMockedData = true;` - Mocked data will be used (Only user 12's information will be available).
-`const isMockedData = false;` - API data will be used
+- `const isMockedData = true;` - Mocked data will be used (Only user 12's information will be available).
+- `const isMockedData = false;` - API data will be used
