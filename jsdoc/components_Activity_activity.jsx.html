@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/Activity/activity.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/Activity/activity.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from "react";
+import ModuleError from "../Error/moduleError";
+
+//Recharts's barChart
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from "recharts";
+
+import { useAxios } from "../../utils/hooks/hooks";
+
+/**
+ * @function Activities
+ * @description This function returns the content of the user's activities.
+ * @param { Array.&lt;Objects> } data - Activitie's data
+ * @param { Boolean } isLoading - True or not in charging state
+ * @param  { Boolean } error - Error or not in charging state
+ * @returns { HTMLElement }
+ **/
+function Activities() {
+  const { data, isLoading, error } = useAxios("/activity");
+
+  const { sessions } = data;
+
+  /**
+   * @function CustomTooltip
+   * @description A custom tooltip for the chart. If the tooltip is active and there is data to display, display the weight and calories burned
+   * @param  { Boolean } active - True or not
+   * @param  { Object } playload - Data
+   * @returns { HTMLElement }
+   */
+  const CustomTooltip = ({ active, payload }) => {
+    if (active &amp;&amp; payload) {
+      return (
+        &lt;div className="activityTooltip">
+          &lt;p className="weightLabel">{payload[0].value}kg&lt;/p>
+          &lt;p className="caloriesLabel">{payload[1].value}Kcal&lt;/p>
+        &lt;/div>
+      );
+    }
+    return null;
+  };
+
+  /**
+   * @function dayFormatter
+   * @description It takes a value, which is a date, and returns the day of the month
+   * @param  { date } value - Date to be formatted
+   * @returns The day of the month.
+   */
+  function dayFormatter(value) {
+    return new Date(value).getDate();
+  }
+
+  if (!isLoading &amp;&amp; !error) {
+    return (
+      &lt;div className="activityContainer">
+        &lt;div className="activityContainerTitle">Activité quotidienne&lt;/div>
+        &lt;ResponsiveContainer width={"99%"} height={210}>
+          &lt;BarChart data={sessions}>
+            &lt;CartesianGrid
+              strokeDasharray="3 3"
+              vertical={false}
+              stroke="#DEDEDE"
+            />
+            &lt;XAxis
+              dataKey="day"
+              tickFormatter={dayFormatter}
+              stroke="#9B9EAC"
+            />
+            &lt;YAxis
+              orientation="right"
+              tickLine={false}
+              axisLine={false}
+              tickCount={3}
+              stroke="#9B9EAC"
+            />
+            &lt;Tooltip
+              content={&lt;CustomTooltip payload={sessions} />}
+              animationEasing="ease-out"
+              wrapperStyle={{ left: 50, top: -20 }}
+            />
+            &lt;Legend
+              className="activityLabel"
+              verticalAlign="top"
+              align="right"
+              iconType="circle"
+              wrapperStyle={{ left: -10, top: -25 }}
+              formatter={(value) => (
+                &lt;span className="textColorLegend">{value}&lt;/span>
+              )}
+            />
+            &lt;Bar
+              name="Poids (kg)"
+              dataKey="kilogram"
+              fill="#282D30"
+              barSize={7}
+              radius={[3, 3, 0, 0]}
+            />
+            &lt;Bar
+              name="Calories brûlées (kCal)"
+              dataKey="calories"
+              fill="#E60000"
+              barSize={7}
+              radius={[3, 3, 0, 0]}
+            />
+          &lt;/BarChart>
+        &lt;/ResponsiveContainer>
+      &lt;/div>
+    );
+  } else if (error) {
+    return &lt;ModuleError />;
+  }
+}
+
+export default Activities;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#Activities">Activities</a></li><li><a href="global.html#AverageSessions">AverageSessions</a></li><li><a href="global.html#CustomCursor">CustomCursor</a></li><li><a href="global.html#CustomizedDot">CustomizedDot</a></li><li><a href="global.html#CustomTooltip">CustomTooltip</a></li><li><a href="global.html#DashBoard">DashBoard</a></li><li><a href="global.html#dayFormatter">dayFormatter</a></li><li><a href="global.html#Error">Error</a></li><li><a href="global.html#Home">Home</a></li><li><a href="global.html#keyDataElement">keyDataElement</a></li><li><a href="global.html#lengendText">lengendText</a></li><li><a href="global.html#moduleError">moduleError</a></li><li><a href="global.html#NavBar">NavBar</a></li><li><a href="global.html#numberFormat">numberFormat</a></li><li><a href="global.html#RadarStats">RadarStats</a></li><li><a href="global.html#Score">Score</a></li><li><a href="global.html#scoreShow">scoreShow</a></li><li><a href="global.html#WelCome">WelCome</a></li><li><a href="global.html#xAxisFormatter">xAxisFormatter</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Wed Sep 28 2022 07:49:42 GMT+0200 (heure d’été d’Europe centrale)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

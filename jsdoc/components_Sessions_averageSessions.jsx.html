@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/Sessions/averageSessions.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/Sessions/averageSessions.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from "react";
+import ModuleError from "../Error/moduleError";
+
+//Recharts's LineChart
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  Tooltip,
+  Rectangle,
+  ResponsiveContainer,
+  Legend,
+} from "recharts";
+
+import { useAxios } from "../../utils/hooks/hooks";
+
+/**
+ * @function dayFormatter
+ * @description Takes a number as argument and returns it as day of the week
+ * @param  {number} num - Data to format
+ * @returns a new array.
+ */
+function dayFormatter(num) {
+  const week = ["L", "M", "M", "J", "V", "S", "D"];
+  return week[+num - 1];
+}
+
+/**
+ * @function CustomCursor
+ * @description Displays where the cursor is located. A rectangle with a fill of black, fill opacity of 0.1, x and y coordinates of the first
+ * point in the points array.
+ * @returns { HTMLElement }
+ */
+const CustomCursor = (props) => {
+  const { points } = props;
+  const { x, y } = points[0];
+  return (
+    &lt;Rectangle
+      fill="black"
+      fillOpacity={0.1}
+      x={x}
+      y={y - 100}
+      width={400}
+      height={400}
+    />
+  );
+};
+
+/**
+ * @function lengendText
+ * @description Legend of average session length
+ * @returns { HTMLElement }
+ */
+const lengendText = () => {
+  return (
+    &lt;div
+      style={{
+        color: "white",
+        marginTop: "20px",
+        marginLeft: "20px",
+        opacity: ".5",
+        position: "relative",
+      }}
+    >
+      Durée moyenne des
+      &lt;br />
+      sessions
+    &lt;/div>
+  );
+};
+
+/**
+ * @function CustomizedDot
+ * @description Displays where the cursor is located.
+ * @returns { HTMLElement }
+ */
+const CustomizedDot = (props) => {
+  const { cx, cy } = props;
+
+  return (
+    &lt;circle
+      cx={cx}
+      cy={cy}
+      r={6}
+      stroke="rgb(255, 255, 255, 0.2)"
+      strokeWidth={15}
+      fill="white"
+    />
+  );
+};
+
+/**
+ * @function AverageSessions
+ * @description This function returns a ligne graph that shows sessions in the week by time spent
+ * @param { Array.&lt;Objects> } data - Session's data
+ * @param { Boolean } isLoading - True or not in charging state
+ * @param  { Boolean } error - Error or not in charging state
+ * @returns { HTMLElement }
+ **/
+function AverageSessions() {
+  const { data, isLoading, error } = useAxios("/average-sessions");
+
+  if (!isLoading &amp;&amp; !error) {
+    const sessions = data.sessions; // const {sessions} = data
+    return (
+      &lt;div className="AverageSessionsContainer">
+        &lt;ResponsiveContainer width="99%">
+          &lt;LineChart
+            data={sessions}
+            margin={{
+              top: 5,
+              right: 10,
+              left: 10,
+              bottom: 5,
+            }}
+          >
+            &lt;XAxis
+              dataKey="day"
+              tickFormatter={dayFormatter}
+              axisLine={false}
+              tickLine={false}
+              stroke="white"
+              opacity={0.5}
+            />
+            &lt;YAxis
+              axisLine={false}
+              tickLine={false}
+              allowDataOverflow={true}
+              hide={true}
+            />
+            &lt;Tooltip
+              cursor={&lt;CustomCursor />}
+              animationEasing="ease-out"
+              labelFormatter={() => ``}
+              formatter={(value) => [value + " min"]}
+              contentStyle={{ border: "none", padding: 0 }}
+              itemStyle={{
+                color: "black",
+                backgroundColor: "white",
+                padding: 12,
+              }}
+            />
+            &lt;Line
+              dataKey="sessionLength"
+              type="natural"
+              stroke="#FFFFFF"
+              strokeWidth={2}
+              activeDot={&lt;CustomizedDot />}
+              dot={false}
+            />
+            &lt;Legend
+              verticalAlign="top"
+              align="left"
+              content={lengendText}
+            >&lt;/Legend>
+          &lt;/LineChart>
+        &lt;/ResponsiveContainer>
+      &lt;/div>
+    );
+  } else if (error) {
+    return &lt;ModuleError />;
+  }
+}
+
+export default AverageSessions;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#Activities">Activities</a></li><li><a href="global.html#AverageSessions">AverageSessions</a></li><li><a href="global.html#CustomCursor">CustomCursor</a></li><li><a href="global.html#CustomizedDot">CustomizedDot</a></li><li><a href="global.html#CustomTooltip">CustomTooltip</a></li><li><a href="global.html#DashBoard">DashBoard</a></li><li><a href="global.html#dayFormatter">dayFormatter</a></li><li><a href="global.html#Error">Error</a></li><li><a href="global.html#Home">Home</a></li><li><a href="global.html#keyDataElement">keyDataElement</a></li><li><a href="global.html#lengendText">lengendText</a></li><li><a href="global.html#moduleError">moduleError</a></li><li><a href="global.html#NavBar">NavBar</a></li><li><a href="global.html#numberFormat">numberFormat</a></li><li><a href="global.html#RadarStats">RadarStats</a></li><li><a href="global.html#Score">Score</a></li><li><a href="global.html#scoreShow">scoreShow</a></li><li><a href="global.html#WelCome">WelCome</a></li><li><a href="global.html#xAxisFormatter">xAxisFormatter</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Wed Sep 28 2022 07:49:42 GMT+0200 (heure d’été d’Europe centrale)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

@@ -1,15 +1,20 @@
 import React from "react";
 import ModuleError from "../Error/moduleError";
+
+//Recharts's PieChart
 import { PieChart, Pie, Cell, Label, ResponsiveContainer } from "recharts";
 
 /**
- * If todayScore is undefined, then set scoreStored to score, otherwise set scoreStored to todayScore
- * @returns The scoreStored variable is being returned.
- */
+ * @function Score
+ * @description This function returns a score chart of the user's statistics. If todayScore is undefined, then set scoreStored to score, otherwise set scoreStored to todayScore.
+ * @param { Array } scoreData - User's main data information
+ * @param { number } todayScore - object#1 containing information
+ * @param { number } score - object#2 containing information
+ * @returns { number } - Store todayScore or score in scoreStored
+ **/
 const Score = ({ scoreData }) => {
   const formatScore = (todayScore, score) => {
     let scoreStored;
-
     todayScore === undefined
       ? (scoreStored = score)
       : (scoreStored = todayScore);
@@ -34,7 +39,9 @@ const Score = ({ scoreData }) => {
   ];
 
   /**
-   * @returns A function that returns the percentage of the score.
+   * @function scoreShow
+   * @description - A function that returns the text of the percentage of the score.
+   * @returns { HTMLElement }
    */
   const scoreShow = ({ viewBox }) => {
     const { cx, cy } = viewBox;

@@ -1,6 +1,7 @@
 import React from "react";
-import Loader from "../../components/Loader/loader";
 import ModuleError from "../Error/moduleError";
+
+//Recharts's barChart
 import {
   BarChart,
   Bar,
@@ -12,38 +13,27 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-import { getUserActivity } from "../../services/API";
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useAxios } from "../../utils/hooks/hooks";
 
 /**
- * This function returns the content of the user's activities.
+ * @function Activities
+ * @description This function returns the content of the user's activities.
+ * @param { Array.<Objects> } data - Activitie's data
+ * @param { Boolean } isLoading - True or not in charging state
+ * @param  { Boolean } error - Error or not in charging state
+ * @returns { HTMLElement }
  **/
 function Activities() {
-  const { id } = useParams();
-  const [sessionsData, setSessionsData] = useState([]);
-  const [isLoading, setLoading] = useState(true);
+  const { data, isLoading, error } = useAxios("/activity");
 
-  /* A function that is called when the component is mounted.
-   * It is used to get the data from the API and return data "day", "weight" and "calories"
-   */
-  useEffect(() => {
-    setLoading(true);
-    getUserActivity(id).then((data) => {
-      const activityData = data.data.sessions.map((items) => ({
-        day: items.day,
-        weight: items.kilogram,
-        calories: items.calories,
-      }));
-      setSessionsData(activityData);
-      setLoading(false);
-      console.log(activityData);
-    });
-  }, [id]);
+  const { sessions } = data;
 
   /**
-   * If the tooltip is active and there is data to display, display the weight and calories burned
-   * @returns A custom tooltip for the chart.
+   * @function CustomTooltip
+   * @description A custom tooltip for the chart. If the tooltip is active and there is data to display, display the weight and calories burned
+   * @param  { Boolean } active - True or not
+   * @param  { Object } playload - Data
+   * @returns { HTMLElement }
    */
   const CustomTooltip = ({ active, payload }) => {
     if (active && payload) {
@@ -58,67 +48,74 @@ function Activities() {
   };
 
   /**
-   * It takes a value, which is a date, and returns the day of the month
-   * @param  {date} value
+   * @function dayFormatter
+   * @description It takes a value, which is a date, and returns the day of the month
+   * @param  { date } value - Date to be formatted
    * @returns The day of the month.
    */
   function dayFormatter(value) {
     return new Date(value).getDate();
   }
 
-  return sessionsData.length ? (
-    <div className="activityContainer">
-      <div className="activityContainerTitle">Activité quotidienne</div>
-      <ResponsiveContainer width={"99%"} height={210}>
-        <BarChart data={sessionsData}>
-          <CartesianGrid
-            strokeDasharray="3 3"
-            vertical={false}
-            stroke="#DEDEDE"
-          />
-          <XAxis dataKey="day" tickFormatter={dayFormatter} stroke="#9B9EAC" />
-          <YAxis
-            orientation="right"
-            tickLine={false}
-            axisLine={false}
-            tickCount={3}
-            stroke="#9B9EAC"
-          />
-          <Tooltip
-            content={<CustomTooltip payload={sessionsData} />}
-            animationEasing="ease-out"
-            wrapperStyle={{ left: 50, top: -20 }}
-          />
-          <Legend
-            className="activityLabel"
-            verticalAlign="top"
-            align="right"
-            iconType="circle"
-            wrapperStyle={{ left: -10, top: -25 }}
-            formatter={(value) => (
-              <span className="textColorLegend">{value}</span>
-            )}
-          />
-          <Bar
-            name="Poids (kg)"
-            dataKey="weight"
-            fill="#282D30"
-            barSize={7}
-            radius={[3, 3, 0, 0]}
-          />
-          <Bar
-            name="Calories brûlées (kCal)"
-            dataKey="calories"
-            fill="#E60000"
-            barSize={7}
-            radius={[3, 3, 0, 0]}
-          />
-        </BarChart>
-      </ResponsiveContainer>
-    </div>
-  ) : (
-    <>{isLoading ? <Loader /> : <ModuleError />}</>
-  );
+  if (!isLoading && !error) {
+    return (
+      <div className="activityContainer">
+        <div className="activityContainerTitle">Activité quotidienne</div>
+        <ResponsiveContainer width={"99%"} height={210}>
+          <BarChart data={sessions}>
+            <CartesianGrid
+              strokeDasharray="3 3"
+              vertical={false}
+              stroke="#DEDEDE"
+            />
+            <XAxis
+              dataKey="day"
+              tickFormatter={dayFormatter}
+              stroke="#9B9EAC"
+            />
+            <YAxis
+              orientation="right"
+              tickLine={false}
+              axisLine={false}
+              tickCount={3}
+              stroke="#9B9EAC"
+            />
+            <Tooltip
+              content={<CustomTooltip payload={sessions} />}
+              animationEasing="ease-out"
+              wrapperStyle={{ left: 50, top: -20 }}
+            />
+            <Legend
+              className="activityLabel"
+              verticalAlign="top"
+              align="right"
+              iconType="circle"
+              wrapperStyle={{ left: -10, top: -25 }}
+              formatter={(value) => (
+                <span className="textColorLegend">{value}</span>
+              )}
+            />
+            <Bar
+              name="Poids (kg)"
+              dataKey="kilogram"
+              fill="#282D30"
+              barSize={7}
+              radius={[3, 3, 0, 0]}
+            />
+            <Bar
+              name="Calories brûlées (kCal)"
+              dataKey="calories"
+              fill="#E60000"
+              barSize={7}
+              radius={[3, 3, 0, 0]}
+            />
+          </BarChart>
+        </ResponsiveContainer>
+      </div>
+    );
+  } else if (error) {
+    return <ModuleError />;
+  }
 }
 
 export default Activities;

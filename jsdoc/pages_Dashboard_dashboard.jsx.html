@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: pages/Dashboard/dashboard.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: pages/Dashboard/dashboard.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from "react";
+import Error from "../Error/error";
+import { useAxios } from "../../utils/hooks/hooks";
+import WelCome from "../../components/Welcome/welcome";
+import KeyDataElement from "../../components/Informations/informations";
+import Score from "../../components/Score/score";
+import RadarStats from "../../components/Radar/radar";
+import AverageSessions from "../../components/Sessions/averageSessions";
+import Activities from "../../components/Activity/activity";
+
+import caloriesIcon from "../../assets/calories-icon.svg";
+import proteinesIcon from "../../assets/protein-icon.svg";
+import glucidesIcon from "../../assets/glucides-icon.svg";
+import lipidesIcon from "../../assets/lipides-icon.svg";
+import caloriesFormat from "../../components/CaloriesFormat/caloriesFormat";
+
+/**
+ * @function DashBoard
+ * @description This function returns the Dashboard with the main user's information
+ * @param { Array.&lt;Objects> } data - User's Main data information
+ * @param { Boolean } isLoading - True or not in charging state
+ * @param  { Boolean } error - Error or not in charging state
+ * @returns { HTMLElement }
+ **/
+
+function DashBoard() {
+  const { data, isLoading, error } = useAxios("/");
+
+  if (!isLoading &amp;&amp; !error) {
+    return (
+      &lt;div className="dashBoard">
+        &lt;WelCome firstName={data.userInfos.firstName} />
+        &lt;div className="globalInformations">
+          &lt;div className="centerInformations">
+            &lt;Activities />
+            &lt;section className="charts">
+              &lt;AverageSessions />
+              &lt;RadarStats />
+              &lt;Score scoreData={data} />
+            &lt;/section>
+          &lt;/div>
+          &lt;section className="sideInformations">
+            &lt;KeyDataElement
+              secondaryClassName="calorieCount"
+              value={caloriesFormat(data.keyData.calorieCount)}
+              unit="kCal"
+              alt="Logo calorie"
+              picto={caloriesIcon}
+              label="Calories"
+            >&lt;/KeyDataElement>
+            &lt;KeyDataElement
+              secondaryClassName="proteinCount"
+              value={data.keyData.proteinCount}
+              unit="g"
+              alt="Logo protein"
+              picto={proteinesIcon}
+              label="Proteines"
+            >&lt;/KeyDataElement>
+            &lt;KeyDataElement
+              secondaryClassName="carbohydrateCount"
+              value={data.keyData.carbohydrateCount}
+              unit="g"
+              alt="Logo glucide"
+              picto={glucidesIcon}
+              label="Glucides"
+            >&lt;/KeyDataElement>
+            &lt;KeyDataElement
+              secondaryClassName="lipidCount"
+              value={data.keyData.lipidCount}
+              unit="g"
+              alt="Logo lipide"
+              picto={lipidesIcon}
+              label="Lipides"
+            >&lt;/KeyDataElement>
+          &lt;/section>
+        &lt;/div>
+      &lt;/div>
+    );
+  } else if (error) {
+    return &lt;Error />;
+  }
+}
+
+export default DashBoard;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#Activities">Activities</a></li><li><a href="global.html#AverageSessions">AverageSessions</a></li><li><a href="global.html#CustomCursor">CustomCursor</a></li><li><a href="global.html#CustomizedDot">CustomizedDot</a></li><li><a href="global.html#CustomTooltip">CustomTooltip</a></li><li><a href="global.html#DashBoard">DashBoard</a></li><li><a href="global.html#dayFormatter">dayFormatter</a></li><li><a href="global.html#Error">Error</a></li><li><a href="global.html#Home">Home</a></li><li><a href="global.html#keyDataElement">keyDataElement</a></li><li><a href="global.html#lengendText">lengendText</a></li><li><a href="global.html#moduleError">moduleError</a></li><li><a href="global.html#NavBar">NavBar</a></li><li><a href="global.html#numberFormat">numberFormat</a></li><li><a href="global.html#RadarStats">RadarStats</a></li><li><a href="global.html#Score">Score</a></li><li><a href="global.html#scoreShow">scoreShow</a></li><li><a href="global.html#WelCome">WelCome</a></li><li><a href="global.html#xAxisFormatter">xAxisFormatter</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Wed Sep 28 2022 07:49:42 GMT+0200 (heure d’été d’Europe centrale)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

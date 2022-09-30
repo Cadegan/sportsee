@@ -5,6 +5,11 @@ import Home from "./pages/Home/index";
 import DashBoard from "./pages/Dashboard/dashboard";
 import Error from "./pages/Error/error";
 
+/**
+ * @function App
+ * @file app.jsx is the home page
+ */
+
 function App() {
   return (
     <Router>
@@ -13,10 +18,6 @@ function App() {
         <Route exact path="/" element={<Home />}></Route>
         <Route exact path="/user/:id" element={<DashBoard />}></Route>
         <Route exact path="*" element={<Error />}></Route>
-        {/* <Route exact path="/" element={<Profile />}></Route>
-                <Route exact path="/" element={<About />}></Route>
-                <Route exact path="/" element={<Setting />}></Route>
-                <Route exact path="/" element={<Community />}></Route> */}
       </Routes>
     </Router>
   );

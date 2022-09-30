@@ -7,8 +7,9 @@ import logoSwimming from "../../assets/swimming.svg";
 import logoYoga from "../../assets/yoga.svg";
 
 /**
- * A function that returns the NavBar component
- * and allows to navigate between different pages
+ * @function NavBar
+ * @description Show the header, left NavBar component and the foot of the site with the navigation
+ * @returns { HTMLElement }
  */
 function NavBar() {
   let activeStyle = {

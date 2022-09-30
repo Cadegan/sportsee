@@ -5,6 +5,19 @@ import PropTypes from "prop-types";
  * Formats the global information
  * @returns A div with a picto image, title and unit.
  */
+
+/**
+ * @function keyDataElement
+ * @description To render the KEY_PERFORMANCE_INDICATOR
+ * @param { object } props - The props of the keyDataElement
+ * @param { string } secondaryClassName - Secondary class name for custom display
+ * @param { String } picto - Image's picto
+ * @param { String } alt - Image's description
+ * @param { String } label - Image's label
+ * @param { number } value - Value of the keyDataElement
+ * @param { string } unit - Value's unit of the keyDataElement
+ * @returns { HTMLElement }
+ */
 function keyDataElement(props) {
   const { secondaryClassName, picto, alt, label, value, unit } = props;
 

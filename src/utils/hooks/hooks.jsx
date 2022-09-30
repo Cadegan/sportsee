@@ -1,5 +1,6 @@
-import mockedData from "../data/mockedData.json";
+import mockedData from "../data/data.json";
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 
 export function useAxios(endpoint) {
@@ -7,50 +8,55 @@ export function useAxios(endpoint) {
   const [isLoading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
-  const userId = 12;
-  const isMockedData = true;
+  const { id } = useParams();
+  const isMockedData = false;
 
-  useEffect(() => {
-    if (!endpoint) {
-      return setLoading(true);
-    }
-
-    function getMockedData(endpoint) {
-      const data = mockedData;
-      switch (endpoint) {
-        case "/":
-          setData(data.userMainData);
-          break;
-        case "/activity":
-          setData(data["userActivity"]);
-          break;
-        case "/average-sessions":
-          setData(data["userAverageSessions"]);
-          break;
-        case "/performance":
-          setData(data["userPerformance"]);
-          break;
-        default:
-          setError(true);
-          setData({});
+  useEffect(
+    () => {
+      if (!endpoint) {
+        return setLoading(true);
       }
-    }
 
-    async function fetchData(endpoint) {
-      try {
-        const response = await axios.get(
-          `http://localhost:3000/user/${userId}${endpoint}`
-        );
-        const data = await response.data;
-        setData(data.data);
-      } catch (err) {
-        console.log(err);
-        setError(true);
-      } finally {
+      const getMockedData = async (endpoint) => {
+        let data = mockedData;
+        switch (endpoint) {
+          case "/":
+            setData(data.data);
+            break;
+          case "/activity":
+            setData(data["activity"]);
+            break;
+          case "/average-sessions":
+            setData(data["average-sessions"]);
+            break;
+          case "/performance":
+            setData(data["performance"]);
+            break;
+          default:
+            setError(true);
+            setData({});
+        }
         setLoading(false);
+      };
+
+      async function fetchData(endpoint) {
+        try {
+          const response = await axios.get(
+            `http://localhost:3000/user/${id}${endpoint}`
+          );
+          const data = await response.data;
+          setData(data.data);
+        } catch (err) {
+          console.log(err);
+          setError(true);
+        } finally {
+          setLoading(false);
+        }
       }
-    }
-    isMockedData ? getMockedData(endpoint) : fetchData(endpoint);
-  }, [endpoint, isMockedData]);
+      isMockedData ? getMockedData(endpoint) : fetchData(endpoint);
+    },
+    [endpoint, isMockedData],
+    console.log("Data is mocked? :", isMockedData)
+  );
   return { data, isLoading, error };
 }

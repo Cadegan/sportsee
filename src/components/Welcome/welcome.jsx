@@ -2,8 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 
 /**
- * The function WelCome displays a sentence with the name of the user.
- * @returns A React component
+ * @function WelCome
+ * @description Return a sentence with the name of the user.
+ * @returns { HTMLElement }
  */
 function WelCome({ firstName }) {
   return (
