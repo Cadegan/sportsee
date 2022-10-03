@@ -9,6 +9,12 @@ export function useAxios(endpoint) {
   const [error, setError] = useState(false);
 
   const { id } = useParams();
+
+  /* 
+  A boolean that determines whether to use mocked data or not. 
+  Set "true" if you want to use the mocked data
+  Set "false" if you want to use the API data
+  */
   const isMockedData = false;
 
   useEffect(
@@ -55,8 +61,8 @@ export function useAxios(endpoint) {
       }
       isMockedData ? getMockedData(endpoint) : fetchData(endpoint);
     },
-    [endpoint, isMockedData],
-    console.log("Data is mocked? :", isMockedData)
+    [endpoint, isMockedData]
+    // console.log("Data is mocked? :", isMockedData)
   );
   return { data, isLoading, error };
 }
