@@ -3,6 +3,7 @@ import Error from "../Error/error";
 import { useAxios } from "../../utils/hooks/hooks";
 import WelCome from "../../components/Welcome/welcome";
 import KeyDataElement from "../../components/Informations/informations";
+// import User from "../../class/User";
 import Score from "../../components/Score/score";
 import RadarStats from "../../components/Radar/radar";
 import AverageSessions from "../../components/Sessions/averageSessions";
@@ -25,6 +26,11 @@ import caloriesFormat from "../../components/CaloriesFormat/caloriesFormat";
 
 function DashBoard() {
   const { data, isLoading, error } = useAxios("/");
+  // const USER = new User(
+  //   data?.userInfos.firstName,
+  //   data?.score ? data.score : data.todayScore
+  // );
+  // console.log(USER);
 
   if (!isLoading && !error) {
     return (
